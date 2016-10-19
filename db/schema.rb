@@ -10,7 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018135833) do
+ActiveRecord::Schema.define(version: 20161019161839) do
+
+  create_table "application_categories", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "application_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["application_id"], name: "index_application_categories_on_application_id"
+    t.index ["category_id", "application_id"], name: "index_application_categories_on_category_id_and_application_id"
+    t.index ["category_id"], name: "index_application_categories_on_category_id"
+  end
+
+  create_table "applications", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "address"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "company_applications", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "application_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["application_id"], name: "index_company_applications_on_application_id"
+    t.index ["company_id", "application_id"], name: "index_company_applications_on_company_id_and_application_id"
+    t.index ["company_id"], name: "index_company_applications_on_company_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "user_id"
+    t.integer  "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_likes_on_review_id"
+    t.index ["user_id", "review_id"], name: "index_likes_on_user_id_and_review_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "star"
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "application_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["application_id"], name: "index_reviews_on_application_id"
+    t.index ["user_id", "application_id", "created_at"], name: "index_reviews_on_user_id_and_application_id_and_created_at"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
