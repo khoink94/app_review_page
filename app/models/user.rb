@@ -26,4 +26,9 @@ class User < ApplicationRecord
       end
     end
   end
+  
+  searchable do 
+    text :email
+  end
+  
 end
