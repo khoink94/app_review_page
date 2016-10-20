@@ -1,0 +1,25 @@
+<div style="width: 1200px; margin: 10px auto; padding: 20px; background-color: #ccc;"> 
+<h1>Search for users or applications</h1>
+
+<%= form_tag search_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.email %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table> 
+</div>

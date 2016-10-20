@@ -27,8 +27,12 @@ class User < ApplicationRecord
     end
   end
   
-  searchable do 
-    text :email
+  def self.user_search(search)
+    if search
+      self.where('email LIKE ?', "%#{search}%")
+    else
+      self.all
+    end
   end
   
 end
