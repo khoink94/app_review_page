@@ -14,7 +14,7 @@
 end
 
 100.times do |n|
-	Application.create!(name: "App#{1}",
+	Application.create!(name: "App#{n}",
 		                description: "OK!")
 end
 
