@@ -1,7 +1,12 @@
 class Application < ApplicationRecord
 	has_many :reviews
 	
-	searchable do
-	    text :name
-	end
+	def self.app_search(search)
+    if search
+      self.where('name LIKE ?', "%#{search}%")
+    else
+      self.all
+    end
+  end
+  
 end
