@@ -70,10 +70,12 @@
         <a href="http://appadvice.com/game" class="am__elem__sub__elem am__elem__sub__elem--big ">Now<strong>Gaming</strong></a>
       </div>
     </div>
+    
 
     <a href="http://appadvice.com/" class="am__elem aa_pull--left aa_padding-l--0">
       <div class="am__elem__text aa_text--24 aa_text--light">App<span class="aa_text--bold">Review</span></div>
     </a>
+
 
 
     <div class="am__main aa_pull--right">
@@ -81,7 +83,15 @@
         <div class="am__elem__text" style="line-height: 52px">. . .</div>
 
         <div class="am__elem__sub js-nav-set-height" style="max-height: none;">
-          
+
+
+          <div class=" am__elem am__elem--sub am__elem--click js-nav-open no-record-s">
+		    <form class=" form-inline" action="<%= search_path %>" method="get">
+	          		<input type="text" class="form-control" id="search" name="search">
+	        	<button type="submit" class="btn btn-success" style="margin-left: 15px">Search</button>
+		    </form>
+	    </div>
+        	
 
           <a href="http://appadvice.com/appnn" class="am__elem active">
             <div class="am__elem__text">NEWS</div>
@@ -101,15 +111,13 @@
             </div>
           </div>
 
-          <a href="http://appadvice.com/reviews" class="am__elem ">
-            <div class="am__elem__text">REVIEWS</div>
-          </a>
+          
+            <div class="am__elem__text"><%= link_to "SIGN IN", user_session_path %></div>
+          
 
          
 
-          <a href="http://appadvice.com/appcharts" class="am__elem ">
-            <div class="am__elem__text">CHARTS</div>
-          </a>
+            <div class="am__elem__text" style="margin-left: 20px"><%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %></div>
 
           
           </div>
