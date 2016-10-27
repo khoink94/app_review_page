@@ -24,5 +24,5 @@ end
 end
 
 100.times do |n|
-	Category.create!(name: "Cat#{1}")
+	Category.create!(name: "Cat#{n}")
 end

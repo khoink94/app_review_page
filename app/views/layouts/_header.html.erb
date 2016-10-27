@@ -1,10 +1,11 @@
 <div class="header">
+  <% if current_user.try(:admin?) %>
        <div class="container">
           <div class="row">
              <div class="col-md-5">
                 <!-- Logo -->
                 <div class="logo">
-                   <h1><a href="index.html">App Review</a></h1>
+                   <h1><%= link_to "App Review", admin_users_path %></h1>
                 </div>
              </div>
              <div class="col-md-5">
@@ -36,4 +37,5 @@
              </div>
           </div>
        </div>
-  </div>
+  <% end %>
+</div>
