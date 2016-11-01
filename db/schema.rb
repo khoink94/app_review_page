@@ -23,23 +23,24 @@ ActiveRecord::Schema.define(version: 20161026194017) do
   end
 
   create_table "applications", force: :cascade do |t|
-    t.string   "name"
+    t.string   "application_name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "category_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "companies", force: :cascade do |t|
+    t.string   "company_name"
     t.string   "address"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "company_applications", force: :cascade do |t|
