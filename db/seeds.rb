@@ -19,10 +19,15 @@ User.create!(email: "admin@app.com",
 end
 
 100.times do |n|
-	Application.create!(name: "App#{n}",
+	Application.create!(application_name: "App#{n}",
 		                description: "OK!")
 end
 
 100.times do |n|
-	Category.create!(name: "Cat#{n}")
+	Category.create!(category_name: "Cat#{n}")
 end
+
+10.times do |n|
+	Company.create!(company_name: "Com#{n}")
+end
+

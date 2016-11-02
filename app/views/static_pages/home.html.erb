@@ -1,288 +1,25 @@
-  <head>
-    <title>App Review</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- styles -->
-    <link href="css/styles.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-  <% if current_user.try(:admin?) %>
+<% if current_user.try(:admin?) %>
     <div class="page-content">
-      <div class="row">
-        <%= render "admin/shared/wrap" %>
-      </div>
+        <div class="row">
+            <%= render "admin/shared/wrap" %>
+        </div>
     </div>
-  <% else %>
-    <!DOCTYPE html>
-<!-- saved from url=(0028)http://appadvice.com/reviews -->
-<html class="js canvas no-forcetouch touchevents video no-backdropfilter no-csspositionsticky supports csstransforms3d csstransitions no-apng">
-
-
-    <title>AppReviews</title>
-
-    <meta name="ROBOTS" content="INDEX,FOLLOW">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.5">
-
-    <meta name="description" content="The list of App Reviews by AppAdvice">
-
-    <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="AppReviews">
-    <meta itemprop="description" content="The list of App Reviews by AppAdvice">
-    <meta itemprop="image" content="/assets-appadvice/AppAdvice/AppAdvice-c12a35af0d392db311b82b409539dec09e30c57c7d28ab832156be1d68214bdc.jpg">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@appadvice">
-    <meta name="twitter:title" content="AppReviews">
-    <meta name="twitter:description" content="The list of App Reviews by AppAdvice">
-    <meta name="twitter:image:src" content="/assets-appadvice/AppAdvice/AppAdvice-c12a35af0d392db311b82b409539dec09e30c57c7d28ab832156be1d68214bdc.jpg">
-    <meta name="twitter:creator" content="appadvice">
-    <meta name="twitter:widgets:theme" content="light">
-    <meta name="twitter:widgets:link-color" content="#0077d7">
-
-    <link rel="me" href="https://twitter.com/appadvice">
-
-    <!--- App Related Twitter card stuff -->
-    <meta name="twitter:app:name:iphone" content="AppAdvice">
-    <meta name="twitter:app:name:ipad" content="AppAdvice">
-    <meta name="twitter:app:url:iphone" content="appadvice://appadvice.com/reviews">
-    <meta name="twitter:app:url:ipad" content="appadvice://appadvice.com/reviews">
-    <meta name="twitter:app:id:iphone" content="364906378">
-    <meta name="twitter:app:id:ipad" content="364906378">
-
-
-
-
-    <!-- Open Graph data -->
-    <meta property="og:title" content="AppReviews">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="http://appadvice.com/reviews">
-    <meta property="og:image" content="/assets-appadvice/AppAdvice/AppAdvice-c12a35af0d392db311b82b409539dec09e30c57c7d28ab832156be1d68214bdc.jpg">
-    <meta property="og:description" content="The list of App Reviews by AppAdvice">
-    <meta property="og:site_name" content="AppAdvice">
-    <meta name="author" content="AppAdvice Staff Author">
-
-
-
-
-    <link rel="canonical" href="http://appadvice.com/reviews">
-
-    <!-- app icons -->
-    <link rel="apple-touch-icon-precomposed" href="http://appadvice.com/assets-appadvice/AppAdvice/apple-touch-icon-152x152-e09ba8eec829f580a536248b3db30cf7c74f8a4b57e1c51cb9596879d5a35fee.png">
-    <link rel="apple-touch-icon" href="http://appadvice.com/assets-appadvice/AppAdvice/apple-touch-icon-628812f173fb0fae0426e8e64ed38bf9d82e4283a38ed2cc5c1f4af162f3cdcd.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="http://appadvice.com/assets-appadvice/AppAdvice/apple-touch-icon-76x76-53c5cdb6a86996f154316db95f0bc20a242bfb50778ddab71f1a0b6a9d399d8b.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="http://appadvice.com/assets-appadvice/AppAdvice/apple-touch-icon-120x120-27cd0560daabf5bb9a5477bb27ecebf1981d7cd8db2a0b74ff12d89ef1225660.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="http://appadvice.com/assets-appadvice/AppAdvice/apple-touch-icon-152x152-e09ba8eec829f580a536248b3db30cf7c74f8a4b57e1c51cb9596879d5a35fee.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="http://appadvice.com/assets-appadvice/AppAdvice/apple-touch-icon-180x180-d885589338e9caaf005a7c3cf81347e0b61c676971b4462f34625c06b4c9ac32.png">
-    <link rel="icon" sizes="128x128" href="http://appadvice.com/assets-appadvice/AppAdvice/touch-icon-128x128-dffbee5ca27d614b63560b6fd2df05eb0ecd449aff54ff5064fea37f9158f317.png">
-    <link rel="icon" sizes="192x192" href="http://appadvice.com/assets-appadvice/AppAdvice/touch-icon-192x192-8b3ddb17876b358356155b2434438d5061c6d32f8eb971ed99dcba51035470da.png">
-    <link rel="icon" type="image/png" href="http://appadvice.com/assets-appadvice/AppAdvice/favicon-32x32-9871085a7e5c61163eaa12264177d1739ef4ba110e7087da12981f24fe52e42a.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="http://appadvice.com/assets-appadvice/AppAdvice/favicon-96x96-67923997b39b5a9ab00854090f41036de214cb5d1c8c6dfaf27115aa00b7692c.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="http://appadvice.com/assets-appadvice/AppAdvice/favicon-16x16-fb0bc6d50413c8a49cf7e3d28bd39101a65de423842013c169fdb3e40fa9e417.png" sizes="16x16">
-    <link rel="mask-icon" href="http://appadvice.com/assets-appadvice/AppAdvice/appadvice_logo_16x16-0e57657ae78d51c7894454ce9fc2e5bebc7a5072abb640086ba144b1f1515a38.svg" color="#0077ff">
-
-    <!-- Feeds -->
-    <link rel="alternate" type="application/rss+xml" title="AppAdvice » Feed" href="http://appadvice.com/feed">
-
-    <meta name="apple-itunes-app" content="app-id=364906378, affiliate-data=1014yW, app-argument=http://appadvice.com/reviews">
-
-    <link href="./AppReviews_files/css" rel="stylesheet" type="text/css">
-    <link href="./AppReviews_files/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" media="all" href="./AppReviews_files/application-17745e2212e143a50f31c5851dae800edd30dab7fdc6e27d18b4a920058a6726.css">
-    <meta name="csrf-param" content="authenticity_token">
-    <meta name="csrf-token" content="WxhyHbkeG0s2o8ax7NL6fxnKhBtdJ7Rsvs8G5gWDSeD9EmVHYD2xiWC6mTaESxlSi5YCMdb5vNuqxuc0qsXG7Q==">
-
-    <!-- start chartbeat  -->
-    <script type="text/javascript">
-        var _sf_startpt = (new Date()).getTime()
-    </script>
-    <!-- end  -->
-
-    <script src="./AppReviews_files/application-head-ec9b572bf4683eb925e8f9609c62a5cc29113ee62a61b506afec80daa5d9337b.js.download"></script>
-
-    <script type="text/javascript">
-        /* <![CDATA[ */
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-5093215-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-
-        (function(b) {
-            (function(a) {
-                "__CF" in b && "DJS" in b.__CF ? b.__CF.DJS.push(a) : "addEventListener" in b ? b.addEventListener("load", a, !1) : b.attachEvent("onload", a)
-            })(function() {
-                "FB" in b && "Event" in FB && "subscribe" in FB.Event && (FB.Event.subscribe("edge.create", function(a) {
-                    _gaq.push(["_trackSocial", "facebook", "like", a])
-                }), FB.Event.subscribe("edge.remove", function(a) {
-                    _gaq.push(["_trackSocial", "facebook", "unlike", a])
-                }), FB.Event.subscribe("message.send", function(a) {
-                    _gaq.push(["_trackSocial", "facebook", "send", a])
-                }));
-                "twttr" in b && "events" in twttr && "bind" in twttr.events && twttr.events.bind("tweet", function(a) {
-                    if (a) {
-                        var b;
-                        if (a.target && a.target.nodeName == "IFRAME") a: {
-                            if (a = a.target.src) {
-                                a = a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);
-                                b = 0;
-                                for (var c; c = a[b]; ++b)
-                                    if (c.indexOf("url") === 0) {
-                                        b = unescape(c.split("=")[1]);
-                                        break a
-                                    }
-                            }
-                            b = void 0
-                        }
-                        _gaq.push(["_trackSocial", "twitter", "tweet", b])
-                    }
-                })
-            })
-        })(window);
-        /* ]]> */
-    </script>
-    <style type="text/css">
-        .cf-hidden {
-            display: none;
-        }
-        
-        .cf-invisible {
-            visibility: hidden;
-        }
-    </style>
-</head>
-
-<body ontouchstart="" class="false  ">
-
-    <!-- main menu -->
-    <nav id="js-nav" class="am am--aa">
-        <div class="container-resp">
-            <div class="am__elem aa_pull--left am__elem--sub am__elem--click js-nav-open">
-                
-
-                    <div class="am__elem__down"></div>
-                    <div class="am__elem__sub aa_padding-lr--20 dark">
-                        <a href="http://appadvice.com/tv" class="am__elem__sub__elem am__elem__sub__elem--big aai-appadvice">App<strong>Advice</strong>/TV</a>
-
-                        <a href="http://watchaware.com/" class="am__elem__sub__elem am__elem__sub__elem--big aai-watchaware">Watch<strong>Aware</strong></a>
-
-                        <a href="http://appadvice.com/game" class="am__elem__sub__elem am__elem__sub__elem--big aai-nowgaming">Now<strong>Gaming</strong></a>
-                    </div>
-                </div>
-
-
-                <a href="http://appadvice.com/" class="am__elem aa_pull--left aa_padding-l--0">
-                    <div class="am__elem__text aa_text--24 aa_text--light">App<span class="aa_text--bold">Advice</span></div>
-                </a>
-
-                <div class="am__elem aa_pull--right am__elem--click js-dark-btn %&gt;">
-                </div>
-
-                <div class="am__elem aa_pull--right am__elem--click js-nav-open has-search on-click ">
-
-                    <div class="am__elem__sub am__elem__sub--behind am__elem__sub--full">
-                        <div class="container-resp aa_position--relative">
-                            <button class="aa_search__close aai-delete-o js-search-close"></button>
-
-                            <form id="js-search" class="am_search " data-before="I want to read about" data-after="You searched for:">
-                                <div class="am_search__icon">
-                                    <div class="mcl_loader mcl_loader--small">
-                                        <div class="mcl_search mcl_search--small">
-                                            <div class="mcl_search__glass">
-                                                <div class="mcl_search__glass__paper">
-                                                    <div class="mcl_search__glass__paper__">
-                                                        <div id="js-search-glass" class="mcl_search__glass__paper__text">Vestibulum iaculis ligula et accumsan tristique. Nullam et odio id ante feugiat ultricies ut vel orci. Sed finibus faucibus purus quis suscipit.</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="mcl_search__handle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="am_search__input">
-                                    <input id="js-search-input" class="am_search__input__" type="search" placeholder="" value="">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="am__main aa_pull--right">
-                    <div class="am__elem aa_pull--right am__elem--click js-nav-open no-record-l">
-                        <div class="am__elem__text" style="line-height: 52px">. . .</div>
-
-                        <div class="am__elem__sub js-nav-set-height" style="max-height: none;">
-                          <!-- <div class=" am__elem am__elem--sub am__elem--click js-nav-open no-record-s">
-        <form class=" form-inline" action="<%= search_path %>" method="get">
-                <input type="text" class="form-control" id="search" name="search">
-            <button type="submit" class="btn btn-success" style="margin-left: 15px">Search</button>
-        </form>
-      </div> -->
-
-                            <div class="am__elem am__elem--sub am__elem--click js-nav-open no-record-s">
-                                <div class="am__elem__text">BEST OF</div>
-
-                                <div class="am__elem__down aa_margin-l--5"></div>
-
-                                <div class="am__elem__sub am__elem__sub--right">
-                                    <a href="http://appadvice.com/collections/" class="am__elem__sub__elem">iOS apps</a>
-
-
-                                    <a href="http://appadvice.com/messages/collections/" class="am__elem__sub__elem">Messages apps</a>
-
-                                    <a href="http://appadvice.com/tv/collections/" class="am__elem__sub__elem">TV apps</a>
-                                </div>
-                            </div>
-
-                            <a href="http://appadvice.com/reviews" class="am__elem active">
-                                <div class="am__elem__text">REVIEWS</div>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </nav>
-    <div id="js-nav-helper" class="am-helper"></div>
-    <!-- main menu end -->
-
-
-
+<% else %>
     <!-- page content -->
     <div class="main-wrapper">
         <noscript>
-    &lt;div class="notification"&gt;For proper use of this site, you need to enable javascript in your browser!&lt;/div&gt;
-  </noscript>
-
+                &lt;div class="notification"&gt;For proper use of this site, you need to enable javascript in your browser!&lt;/div&gt;
+            </noscript>
+    
         <div class="notification browsehappy">You are using an <strong>outdated</strong> browser. Please
             <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-
+    
         <nav id="js-nav-second" class="am-second">
             <div class="container-resp">
                 App Reviews
             </div>
         </nav>
-
+    
         <header class="aa_head aa_clearfix">
             <div class="aa_header">
                 <div class="aa_position--relative aa_gr aa_gr--3">
@@ -291,7 +28,7 @@
                             <h1 class="aa_header__text__title aa_header__text__title--l aa__text--condensed">
                                 App Reviews
                             </h1>
-
+    
                             <p class="aa_header__text__intro">
                                 The list of App Reviews by HelloBugs
                             </p>
@@ -300,508 +37,58 @@
                 </div>
             </div>
         </header>
-
+    
         <section class="content aa_clearfix">
             <div class="container-resp aa_grid aa_grid--2-m aa_grid--3-l aa_grid--4-xl aa_padding-t--20">
                 <!-- app reviews -->
-               
-               
-               
-              
-               
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/weather-nerd" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="7.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="75.30000000000001">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
+                <% @applications.each do |application| %>
+                    <div class="aa_grid__elem">
+                        <a href="http://appadvice.com/review/weather-nerd" class="aa_ar aa_clearfix">
+                            <div class="aa_ar__score">
+                                <div class="aa_app__score" data-score="7.0">
+                                    <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="75.30000000000001">
+                                        <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
+                                        <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
+                                      </svg>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--5">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://is4.mzstatic.com/image/pf/us/r30/Purple3/v4/25/c8/64/25c864cf-5743-0e03-67dc-ba49fdf2213e/mzl.npltjthd.175x175-75.png)"></div>
+    
+                            <div class="aa_ar__icon">
+                                <div class="aa_app__icon aa_bg aa_grad--5">
+                                    <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://is4.mzstatic.com/image/pf/us/r30/Purple3/v4/25/c8/64/25c864cf-5743-0e03-67dc-ba49fdf2213e/mzl.npltjthd.175x175-75.png)"></div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Weather Nerd - Forecasts and Radar</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">All Star Apps</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Weather Nerd is a weather app that lives up to the name, but could use some improvements all around.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/kayos" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="9.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="25.099999999999994">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--1">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://a1472.phobos.apple.com/us/r30/Purple5/v4/ec/01/03/ec010360-4aa3-f7a0-8d80-1a3254582790/pr_source.png?downloadKey=1429739190_eba5be03139924e6ea336d1c84b95c67)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Kayos</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Jonathan Lanis</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Looking for a quick but challenging endless runner to keep you busy throughout the day? Then you need to check out Kayos from the developer behind Boost 2.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/does-not-commute" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="9.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="25.099999999999994">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--3">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://is5.mzstatic.com/image/pf/us/r30/Purple1/v4/52/86/c1/5286c16b-db2f-bfc7-2ad0-af611621ab5e/mzl.kswmyant.175x175-75.png)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Does not Commute</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Mediocre AB</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Think you can control a bunch of cars at once? In Does Not Commute, it's a lot harder than it looks.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/implosion-never-lose-hope" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="10">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="0.0">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--2">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://a809.phobos.apple.com/us/r30/Purple1/v4/a0/87/da/a087da20-50f0-dc75-1f58-23ee72d67fbd/pr_source.png?downloadKey=1429652945_05a6a904b8a30156d0ac12b04def2370)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Implosion - Never Lose Hope</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Rayark Inc.</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Implosion is a sci-fi mecha game on mobile done right.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/bit-journey" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="8.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="50.19999999999999">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--1">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load error" style="background-image: url(http://a1534.phobos.apple.com/us/r30/Purple7/v4/65/eb/b2/65ebb2b2-9093-5e97-5a45-28c7ce43b9e4/mzl.yoopsjfj.175x175-75.png)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Bit Journey</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Marcos Morais</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Need an intense, action-packed hack-n-slash game to perk up your week? Then you should check out Bit Journey.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/tiny-guardians" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="9.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="25.099999999999994">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--4">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load error" style="background-image: url(http://a1356.phobos.apple.com/us/r30/Purple5/v4/6f/3b/9e/6f3b9e4e-08ce-3116-e391-9f894052178f/mzl.bjqjoyaj.175x175-75.png)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Tiny Guardians</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Kurechii</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Love tower defense games, but want something new and different? Then Tiny Guardians should satisfy your craving.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/layer-simple-is-hard" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="10">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="0.0">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--1">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://a505.phobos.apple.com/us/r30/Purple1/v4/54/14/fd/5414fda9-c25e-9db6-4f8e-93de7c46f2a8/pr_source.png?downloadKey=1429307062_5cb6691112a70cc7f62639b5dbceeb09)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Layer - simple is hard</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Gamenauts</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Need a puzzle game that uses all of your brainpower, not cash, to win? Then you should check out Layer.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/zendots" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="9.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="25.099999999999994">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--3">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://a1008.phobos.apple.com/us/r30/Purple1/v4/17/17/bf/1717bf60-22a7-9c87-95db-5b32a4b28bf0/pr_source.png?downloadKey=1429225710_97e8877a0e4e39fd80dc17b4f09b4fe0)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">ZenDots</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Little White Bear Studios, LLC</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">ZenDots is an interesting mashup of pinball and Breakout that will help you relax after a long day.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/arcane-tower" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="8.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="50.19999999999999">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--0">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load error" style="background-image: url(http://a696.phobos.apple.com/us/r30/Purple1/v4/12/61/43/1261432c-d021-28a6-cd98-395bb404bfe7/mzl.adoswvcj.175x175-75.png)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Arcane Tower</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Diego Cathalifaud</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Craving a new roguelike game on iOS to keep you busy? Then you should check out Arcane Tower.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/test-chamber" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="9.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="25.099999999999994">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--2">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://a1966.phobos.apple.com/us/r30/Purple5/v4/cf/48/35/cf4835e1-4259-450a-6729-02a80c5809cc/pr_source.png?downloadKey=1429135973_e4bafe92cd7dfbaab45854f5a17fc190)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Test Chamber - Mind-bending Puzzles</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">M LE KRUPA &amp; T.J LEE</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">In the mood for some existentialism and concept of space in the form of a puzzle? Then you should check out Test Chamber.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/pie-in-the-sky" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="9.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="25.099999999999994">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--4">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load error" style="background-image: url(http://a1667.phobos.apple.com/us/r30/Purple1/v4/91/33/40/913340a6-156d-98f1-11c2-ec8dccc2525f/pr_source.png?downloadKey=1429049654_0671bc2bec5870a6ffaa9d66732ffc84)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Pie In The Sky: A Pizza Odyssey</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Salty Croc Interactive Inc.</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">If you are looking for quirky endless runners with a twist, then you need to check out Pie In The Sky.</p>
-                    </a>
-                </div>
-                <div class="aa_grid__elem">
-                    <a href="http://appadvice.com/review/devious-dungeon-2" class="aa_ar aa_clearfix">
-                        <div class="aa_ar__score">
-                            <div class="aa_app__score" data-score="9.0">
-                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="25.099999999999994">
-                <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-              </svg>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__icon">
-                            <div class="aa_app__icon aa_bg aa_grad--3">
-                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://a1461.phobos.apple.com/us/r30/Purple1/v4/fa/5f/55/fa5f55b4-814a-1528-f499-a7dfcfaea274/pr_source.png?downloadKey=1428962824_53aaf0bba1002779fc4511cf2d577416)"></div>
-                            </div>
-                        </div>
-
-                        <div class="aa_ar__text">
-                            <div class="aa_ar__text__">
-                                <h3 class="aa_ar__text__title aa_text--truncate">Devious Dungeon 2</h3>
-
-                                <div class="aa_ar__text__developer aa_text--truncate">Ravenous Games Inc.</div>
-                            </div>
-                        </div>
-
-                        <p class="aa_ar__details">Need some medieval action platforming in your life? Then you should check out Devious Dungeon 2, the latest title from Ravenous Games.</p>
-                    </a>
-                </div>
-                <!-- app reviews end -->
-            </div>
-        </section>
-
-    </div>
-    <!-- page content end -->
-
-    <!-- footer -->
-    <footer class="footer">
-        <span class="aa_opacity--05">Copyright 2016 HelloBugs LLC. All rights reserved.</span>
-    </footer>
-    <!-- footer end -->
-
-    <!-- search start -->
-    <div id="js-search-wrapper" class="aa_search  ">
-        <div class="container-resp aa_clearfix">
-            <div id="js-search-state" class="aa_search-title aa_padding-t--15">
-                <div class="aa_st__ aa_st__--base">
-                    <div class="aa_st__title">Looking for something?</div>
-
-                    <div class="aa_st__subtitle">Type some keywords or select one of our topics</div>
-                </div>
-
-                <div class="aa_st__ aa_st__--search">
-                    <div class="aa_st__title">Searching</div>
-
-                    <div class="aa_st__subtitle">Be patient</div>
-                </div>
-
-                <div class="aa_st__ aa_st__--success">
-                    <div id="js-search-title" class="aa_st__title"></div>
-
-                    <div id="js-search-count" class="aa_st__subtitle"></div>
-                </div>
-
-                <div class="aa_st__ aa_st__--error">
-                    <div class="aa_st__title">Nothing found :(</div>
-
-                    <div class="aa_st__subtitle">Try something else</div>
-
-                    <div class="mcl_loader mcl_loader--cloud">
-                        <div class="mcl_cloud">
-                            <div class="mcl_cloud__1"></div>
-                            <div class="mcl_cloud__2"></div>
-                            <div class="mcl_cloud__3"></div>
-                            <div class="mcl_cloud__4"></div>
-                            <div class="mcl_cloud__5"></div>
-
-                            <div class="mcl_rain mcl_rain--1"></div>
-                            <div class="mcl_rain mcl_rain--1"></div>
-                            <div class="mcl_rain mcl_rain--2"></div>
-                            <div class="mcl_rain mcl_rain--2"></div>
-                            <div class="mcl_rain mcl_rain--3"></div>
-                            <div class="mcl_rain mcl_rain--3"></div>
-                            <div class="mcl_rain mcl_rain--3"></div>
-                            <div class="mcl_rain mcl_rain--3"></div>
-                            <div class="mcl_rain mcl_rain--4"></div>
-                            <div class="mcl_rain mcl_rain--4"></div>
-                            <div class="mcl_rain mcl_rain--5"></div>
-                            <div class="mcl_rain mcl_rain--5"></div>
-                            <div class="mcl_rain mcl_rain--5"></div>
-                            <div class="mcl_rain mcl_rain--5"></div>
-                            <div class="mcl_rain mcl_rain--6"></div>
-                            <div class="mcl_rain mcl_rain--6"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- result types here -->
-            <div id="js-search-types" class="aa_search-types"></div>
-            <!-- result types end -->
-
-            <!-- search results here -->
-            <div id="js-search-results" class="article-container aa_clearfix aa_padding-tb--20"></div>
-            <!-- search results end -->
-
-            <!-- search nav here -->
-            <div class="aa_search-nav aa_clearfix">
-                <button id="js-search-prev" class="aai-chevron-left-o aa_hidden"></button>
-                <button id="js-search-next" class="aai-chevron-right-o aa_hidden"></button>
-            </div>
-            <!-- search nav end -->
-
-            <!-- fix content start -->
-            <div class="aa_search-labels">
-                <a href="http://appadvice.com/appnn/interests/accessories" class="aa_sl__elem">Hardware Apps</a>
-                <a href="http://appadvice.com/appnn/interests/app-sales" class="aa_sl__elem">App Bargain Bin</a>
-                <a href="http://appadvice.com/appnn/interests/applefan" class="aa_sl__elem">Apple Water Cooler</a>
-                <a href="http://appadvice.com/appnn/interests/appleinc" class="aa_sl__elem">All Things Apple Inc.</a>
-                <a href="http://appadvice.com/appnn/interests/applelegal" class="aa_sl__elem">Apple in the Court Room</a>
-                <a href="http://appadvice.com/appnn/interests/carriernews" class="aa_sl__elem">iCarriers</a>
-                <a href="http://appadvice.com/appnn/interests/communication" class="aa_sl__elem">Digital Communicator</a>
-                <a href="http://appadvice.com/appnn/interests/competitors" class="aa_sl__elem">Apple's Competitors</a>
-                <a href="http://appadvice.com/appnn/interests/connected-car" class="aa_sl__elem">Connected Car</a>
-                <a href="http://appadvice.com/appnn/interests/connected-home" class="aa_sl__elem">Connected Home</a>
-                <a href="http://appadvice.com/appnn/interests/data-management" class="aa_sl__elem">Space Saver</a>
-                <a href="http://appadvice.com/appnn/interests/enterprise" class="aa_sl__elem">Apple + Enterprise</a>
-                <a href="http://appadvice.com/appnn/interests/finance" class="aa_sl__elem">Mind on my Money</a>
-                <a href="http://appadvice.com/appnn/interests/financials-2" class="aa_sl__elem">Apple Goes to Wall Street</a>
-                <a href="http://appadvice.com/appnn/interests/fitness-health" class="aa_sl__elem">Staying Fit by Keeping Connected</a>
-                <a href="http://appadvice.com/appnn/interests/generalmac" class="aa_sl__elem">All Things Mac</a>
-                <a href="http://appadvice.com/appnn/interests/idevices" class="aa_sl__elem">iDevices</a>
-                <a href="http://appadvice.com/appnn/interests/igtd" class="aa_sl__elem">Getting Stuff Done</a>
-                <a href="http://appadvice.com/appnn/interests/ipersonnel" class="aa_sl__elem">The People behind Apple</a>
-                <a href="http://appadvice.com/appnn/interests/iphotographer" class="aa_sl__elem">iPhotographer</a>
-                <a href="http://appadvice.com/appnn/interests/istores" class="aa_sl__elem">All the Stores - App Store, iTunes, &amp; Retail</a>
-                <a href="http://appadvice.com/appnn/interests/mobile-videos" class="aa_sl__elem">iPlay Video</a>
-                <a href="http://appadvice.com/appnn/interests/mobilepay" class="aa_sl__elem">iWallet: Ditch Your Credit Card</a>
-                <a href="http://appadvice.com/appnn/interests/music" class="aa_sl__elem">The Mobile Radio &amp; Record Player</a>
-                <a href="http://appadvice.com/appnn/interests/news" class="aa_sl__elem">New Newspaper</a>
-                <a href="http://appadvice.com/appnn/interests/pocket-gaming" class="aa_sl__elem">Pocket Gaming</a>
-                <a href="http://appadvice.com/appnn/interests/postpc" class="aa_sl__elem">Post-PC Era</a>
-                <a href="http://appadvice.com/appnn/interests/productnews" class="aa_sl__elem">Apple Doomed Or Ready to Boom?</a>
-                <a href="http://appadvice.com/appnn/interests/reading" class="aa_sl__elem">iOS Reading</a>
-                <a href="http://appadvice.com/appnn/interests/savemoney" class="aa_sl__elem">Shopping, Deals &amp; Saving Money</a>
-                <a href="http://appadvice.com/appnn/interests/security" class="aa_sl__elem">Security: The Fight Against The Bad Guys</a>
-                <a href="http://appadvice.com/appnn/interests/sports" class="aa_sl__elem">Slide for Sports</a>
-                <a href="http://appadvice.com/appnn/interests/tv-videos" class="aa_sl__elem">The Pocket Theatre</a>
-                <a href="http://appadvice.com/appnn/interests/watchware" class="aa_sl__elem">WatchWare</a>
-                <a href="http://appadvice.com/appnn/interests/wearables" class="aa_sl__elem">That iThingy You're Wearing</a>
-                <a href="http://appadvice.com/appnn/interests/appreleases" class="aa_sl__elem">App-dicted</a>
-                <a href="http://appadvice.com/appnn/interests/devnews" class="aa_sl__elem">Dev Talk</a>
-            </div>
-            <!-- fix content end -->
-
-            <!-- template for search results -->
-            <div id="js-search-template" class="aa_hidden">
-                <div class="article aa_clearfix">
-                    <div class="article__pad">
-                        <div class="aa_position--relative">
-                            <a href="http://appadvice.com/search" class="article__a" data-replace="permalink;href">
-                                <div class="article__img">
-                                    <div class="article__img__bg">
-                                        <div class="aa_bg__ aa_wait-to-load js-wait-to-load" data-replace="image;background-image"></div>
+    
+                            <div class="aa_ar__text">
+                                <div class="aa_ar__text__">
+                                    <h3 class="aa_ar__text__title aa_text--truncate">
+                                        <%= application.application_name %>
+                                    </h3>
+    
+                                    <div class="aa_ar__text__developer aa_text--truncate">
+                                        <%= application.company_name %>
                                     </div>
                                 </div>
-                                <div class="article__title">
-                                    <h3 class="article__title__text" data-replace="title"></h3>
-                                </div>
-                            </a>
-
-                            <div class="article__details">
-                                <div class="article__data">
-                                    <a href="http://appadvice.com/reviews" class="article__author aa_pull--left underline aa_text--medium aa_text--italic" data-replace="&#39;/appnn/author/&#39;author_slug;href+author"></a>
-
-                                    <div class="article__info--left aa_opacity--05" data-replace="&#39;| &#39;date"></div>
-                                </div>
                             </div>
-                        </div>
+    
+                            <p class="aa_ar__details">
+                                <%= application.description %>
+                            </p>
+                        </a>
                     </div>
-                </div>
+                    <% end %>
+    
+                        <!-- app reviews end -->
             </div>
-            <!-- template end for search results -->
-        </div>
+            <div style="text-align: center;">
+                <%= will_paginate @applications %>
+            </div>
+        </section>
+    
     </div>
-    <!-- search end -->
+    <!-- page content end -->
+        
+    <!-- script start -->
 
     <script src="./AppReviews_files/jquery-2.1.3.min.js.download"></script>
     <script src="./AppReviews_files/application-ccfbd177fc6b347796b3c5705f588c1c05d8127d61638f0a439c173470f49c26.js.download"></script>
@@ -826,10 +113,10 @@
     </script>
 
     <noscript>
-&lt;div style="display:none;"&gt;
-&lt;img src="//pixel.quantserve.com/pixel/p-5flAQjcDBLd4s.gif" border="0" height="1" width="1" alt="Quantcast"/&gt;
-&lt;/div&gt;
-</noscript>
+    &lt;div style="display:none;"&gt;
+    &lt;img src="//pixel.quantserve.com/pixel/p-5flAQjcDBLd4s.gif" border="0" height="1" width="1" alt="Quantcast"/&gt;
+    &lt;/div&gt;
+    </noscript>
     <!-- End Quantcast tag -->
 
 
@@ -840,8 +127,8 @@
     </script>
     <script type="text/javascript" src="./AppReviews_files/bootstrap.js.download"></script>
     <noscript>
-    &lt;img width="1" height="1" src="https://ssl-appadvice-com-c20de9.c-col.com"/&gt;
-</noscript>
+        &lt;img width="1" height="1" src="https://ssl-appadvice-com-c20de9.c-col.com"/&gt;
+    </noscript>
     <!-- END Compete XL Code for appadvice.com -->
 
     <!-- Begin comScore Tag -->
@@ -860,8 +147,8 @@
         })();
     </script>
     <noscript>
-  &lt;img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=17817734&amp;cv=2.0&amp;cj=1" /&gt;
-</noscript>
+      &lt;img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=17817734&amp;cv=2.0&amp;cj=1" /&gt;
+    </noscript>
     <!-- End comScore Tag -->
 
     <!-- Start chartbeat tag -->
@@ -896,11 +183,5 @@
     <script type="text/javascript">
         /* CloudFlare analytics upgrade */
     </script>
-
-
-
-</body>
-
-</html>
-  <% end %>
-  </body>
+    <!-- script end -->
+<% end %>

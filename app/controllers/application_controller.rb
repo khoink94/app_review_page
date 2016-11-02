@@ -15,4 +15,6 @@ class ApplicationController < ActionController::Base
         :current_password, :avatar, :avatar_cache, :remove_avatar
     end
   end
+  
+  @categories = Category.all
 end

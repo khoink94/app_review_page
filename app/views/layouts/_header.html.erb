@@ -1,37 +1,110 @@
-<div class="header">
-  <% if current_user.try(:admin?) %>
-       <div class="container">
-          <div class="row">
-             <div class="col-md-5">
-                <!-- Logo -->
-                <div class="logo">
-                   <h1><%= link_to "App Review", admin_users_path %></h1>
-                </div>
-             </div>
-             <div class="col-md-5">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="input-group form">
-                         <input type="text" class="form-control" placeholder="Search...">
-                         <span class="input-group-btn">
-                           <button class="btn btn-primary" type="button">Search</button>
-                         </span>
+<% if current_user.try(:admin?) %>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h1>
+                            <%= link_to "App Review", admin_users_path %>
+                        </h1>
                     </div>
-                  </div>
                 </div>
-             </div>
-             <div class="col-md-2">
-                <div class="navbar navbar-inverse" role="banner">
-                    <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-                      <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                          <%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %>
-                        </li>
-                      </ul>
-                    </nav>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                   <button class="btn btn-primary" type="button">Search</button>
+                                 </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-             </div>
-          </div>
-       </div>
-  <% end %>
-</div>
+                <div class="col-md-2">
+                    <div class="navbar navbar-inverse" role="banner">
+                        <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <%= link_to "LOG OUT", destroy_user_session_path, :method => :delete %>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+<% else %>
+    <!-- main menu -->
+        <nav id="js-nav" class="am am--aa">
+            <div class="container-resp">
+                <a href="<%= root_path %>" class="am__elem aa_pull--left aa_padding-l--0">
+                    <div class="am__elem__text aa_text--24 aa_text--light">App<span class="aa_text--bold">Advice</span></div>
+                </a>
+        
+                <div class="am__elem aa_pull--right am__elem--click js-dark-btn %&gt;">
+                </div>
+        
+                <div class="am__main aa_pull--right">
+                    <div class="am__elem aa_pull--right am__elem--click js-nav-open no-record-l">
+                        <div class="am__elem__sub js-nav-set-height" style="max-height: none;">
+                            <div class="btn btn-lg search-button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </div>
+        
+                            <div class="am__elem am__elem--sub am__elem--click js-nav-open no-record-s">
+                                <div class="am__elem__text">BEST OF</div>
+        
+                                <div class="am__elem__down aa_margin-l--5"></div>
+        
+                                <div class="am__elem__sub am__elem__sub--right">
+                                    <a href="http://appadvice.com/collections/" class="am__elem__sub__elem">iOS apps</a>
+        
+        
+                                    <a href="http://appadvice.com/messages/collections/" class="am__elem__sub__elem">Messages apps</a>
+        
+                                    <a href="http://appadvice.com/tv/collections/" class="am__elem__sub__elem">TV apps</a>
+                                </div>
+                            </div>
+        
+                            <a href="http://appadvice.com/reviews" class="am__elem active">
+                                <div class="am__elem__text">REVIEWS</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="search-input">
+            <div style="width: 800px; margin: 30px auto;">
+                <form action="<%= search_path %>" method="get">
+                    <div class="row">
+                        <div class="form-group col-sm-10" style="margin-bottom: 0;">
+                            <input type="text" class="form-control" id="search" name="search" placeholder="applications, authors, ...">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-success" style="">Search</button>
+                        </div>
+                        <div class="form-group col-sm-4" style="margin-top: 15px;">
+                            <label for="category">Category:</label>
+                            <select class="form-control" id="category" name="category">
+                                <option value=''  selected>All</option>
+                                <% @categories.each do |category| %>
+                                    <option value="<%= category.category_name %>"><%= category.category_name %></option>
+                                <% end %>  
+                            </select>
+                        </div>
+                        <div class="col-sm-4" style="margin-top: 15px;">
+                            <label for="range">Minimum Rate:</label>
+                            <div class="range range-success" style="margin-top: 5px; background-color: white;">
+                                <input type="range" name="rateinput" min="1" max="10" value="5" onchange="$('#rate-output').val(value+'*');">
+                                <output id="rate-output">5 *</output>
+                            </div>
+                        </div>
+                    </div>    
+                </form>
+            </div>
+        </div>
+    <!-- main menu end -->
+
+<% end %>
