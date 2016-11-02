@@ -38,7 +38,7 @@
 							<tbody>
 								<% @applications.each do |application|%>
 									<tr class="gradeU">
-										<td><%= link_to application.name, admin_application_path(application) %></td>
+										<td><%= link_to application.application_name, admin_application_path(application) %></td>
 										<td><%= application.description %></td>
 										<td><%= application.created_at %></td>
 										<td><%= application.updated_at %></td>

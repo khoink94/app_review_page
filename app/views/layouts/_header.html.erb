@@ -1,4 +1,5 @@
 <% if current_user.try(:admin?) %>
+    <div class="header">
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
@@ -34,6 +35,7 @@
                 </div>
             </div>
         </div>
+    </div>
 <% else %>
     <!-- main menu -->
         <nav id="js-nav" class="am am--aa">
@@ -89,9 +91,7 @@
                             <label for="category">Category:</label>
                             <select class="form-control" id="category" name="category">
                                 <option value=''  selected>All</option>
-                                <% @categories.each do |category| %>
-                                    <option value="<%= category.category_name %>"><%= category.category_name %></option>
-                                <% end %>  
+                                
                             </select>
                         </div>
                         <div class="col-sm-4" style="margin-top: 15px;">

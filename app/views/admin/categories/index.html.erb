@@ -30,7 +30,7 @@
 							<tbody>
 								<% @categories.each do |category|%>
 									<tr class="gradeU">
-										<td><%= link_to category.name,  admin_categories_path %></td>
+										<td><%= link_to category.category_name,  admin_categories_path %></td>
 										<td><%= category.created_at %></td>
 										<td><%= category.updated_at %></td>
 									</tr>

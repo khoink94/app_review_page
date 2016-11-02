@@ -10,7 +10,7 @@ class Admin::CategoriesController < ApplicationController
 
 	private
 	def find_category
-		@category = Application.find_by id: params[:id]
+		@category = Category.find_by id: params[:id]
 		if @category.nil?
 			flash.now[:danger] = "Can't display app information"
 			redirect_to root_path
