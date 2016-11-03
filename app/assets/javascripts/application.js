@@ -12,19 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require_tree .
-$(document).ready(function(){
-    var search_click = 0;
-    $('.search-input').slideUp();
-    $(".search-button").click(function(){
-        if(search_click == 0){
-            $('.search-input').slideDown();
-            search_click = 1;
-        }else{
-            $('.search-input').slideUp();
-            search_click = 0;
-        }    
-    });
-});
