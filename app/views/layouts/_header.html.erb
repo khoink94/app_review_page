@@ -86,13 +86,13 @@
                                 <div class="am__elem__text">REVIEWS</div>
                             </a>
                             <% if user_signed_in? %>
-                              <div class="am__elem__text"><%= link_to "EDIT", edit_user_registration_path %>
+                              <div class="am__elem__text" style="padding-left: 10px;"><%= link_to "EDIT", edit_user_registration_path %>
                               
                               </div>
                               <div class="am__elem__text" style="margin-left: 15px"><%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
                               </div>
                             <% else %>
-                              <div class="am__elem__text"><%= link_to "SIGN IN", user_session_path %>
+                              <div class="am__elem__text" style="padding-left: 10px;"><%= link_to "SIGN IN", user_session_path %>
                               
                               </div>
                               <div class="am__elem__text" style="margin-left: 15px"><%= link_to "SIGN UP", new_user_registration_path %>
