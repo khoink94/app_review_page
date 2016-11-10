@@ -45,7 +45,7 @@
                 <!-- app reviews -->
                 <% @applications.each do |application| %>
                     <div class="aa_grid__elem">
-                        <a href="http://appadvice.com/review/weather-nerd" class="aa_ar aa_clearfix">
+                        <a href="<%= app_path %>?name=<%= application.application_name %>" class="aa_ar aa_clearfix">
                             <div class="aa_ar__score">
                                 <div class="aa_app__score" data-score="7.0">
                                     <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="75.30000000000001">
