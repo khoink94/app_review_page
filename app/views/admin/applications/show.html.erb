@@ -38,8 +38,16 @@
               <p>
                 <%= link_to "Edit", edit_admin_application_path, class: "btn btn-success" %>
               </p>
-
+              
 	  				</div>
+            <div class="panel-body">
+              <p>
+                <h6>Categories</h6>
+                <% @application.categories.each do |category| %>
+                  <%= link_to category.category_name,  admin_category_path(category) %>
+                <% end %>
+              </p>
+            </div>
 	  			</div>
 	  		</div>
   		</div>

@@ -7,11 +7,18 @@ class Admin::ApplicationsController < ApplicationController
 
 	def new
 		@application = Application.new
+		@categories = Category.all
 	end
 
 	def create
 		@application = Application.new application_params
 		if @application.save
+			params[:application][:category_ids].each do |id|
+				category = Category.find_by id: id
+				unless category.nil? || @application.categories.include?(category)
+					@application.categories << category
+				end
+			end
 			flash[:success] = "Application created"
 			redirect_to admin_applications_path
 		else
