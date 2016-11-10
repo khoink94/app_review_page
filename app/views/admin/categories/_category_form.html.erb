@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @category] do |f| %>
+      <p>
+        <%= f.label :category_name %>
+        <%= f.text_field :category_name, class: "form-control" %>
+      </p>
+      <div class="field">
+        <%= f.label :categoryimage %>
+        <p>
+          <%= image_tag(@category.categoryimage.url, :width => 100, :height => 100) if @category.categoryimage? %>
+        </p>
+        <%= f.file_field :categoryimage, class: "form-control" %>
+        <%= f.hidden_field :categoryimage_cache %>
+      </div>
+      <br>
+      <p> 
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </p>
+    <% end %>
+  </div>
+</div>

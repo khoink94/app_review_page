@@ -25,6 +25,7 @@
 									<th>Category Name</th>
 									<th>Creating date</th>
 									<th>Updating at</th>
+									<th>Number Of Applications</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -33,6 +34,7 @@
 										<td><%= link_to category.category_name,  admin_category_path(category) %></td>
 										<td><%= category.created_at %></td>
 										<td><%= category.updated_at %></td>
+										<td><%= category.applications.count %></td>
 									</tr>
 								<% end %>
 							</tbody>
