@@ -1,11 +1,17 @@
 class Admin::CategoriesController < ApplicationController
 	before_action :authenticate_user!, :verify_admin
-	before_action :find_category, only: :show
+	before_action :find_category, only: [:show, :destroy]
 	def index
 		@categories = Category.paginate(page: params[:page], :per_page => 11)
 	end
 
 	def show
+	end
+
+	def destroy
+		@category.destroy
+		flash[:success] = "Category deleted!"
+		redirect_to admin_categories_path
 	end
 
 	private

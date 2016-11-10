@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @application] do |f| %>
+
+      <%= f.label :application_name %>
+      <%= f.text_field :application_name, class: "form-control" %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+
+      <div class="field">
+         <%= f.label :appimage %>
+         <%= f.file_field :appimage, class: "form-control" %>
+         <%= f.hidden_field :appimage_cache %>
+      </div>
+      <br>
+
+      <%= f.collection_check_boxes :category_ids, @categories, :id, :category_name do |s| %>
+        <div class="checkbox">
+          <%= s.check_box %>
+          <%= s.label %>
+        </div>
+      <% end %>
+
+      <p> 
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </p>
+    <% end %>
+  </div>
+</div>

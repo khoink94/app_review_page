@@ -6,6 +6,6 @@ class CreateApplicationCategories < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :application_categories, [:category_id, :application_id]
+    add_index :application_categories, [:category_id, :application_id], unique: true
   end
 end
