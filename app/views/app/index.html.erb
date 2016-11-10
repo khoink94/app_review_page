@@ -4,7 +4,8 @@
 
         <div class="al_header__media">
             <div id="js-header-parallax" class="al_header__media__img">
-                <div class="al_header__media__img__bg aa_wait-to-load js-wait-to-load" style="background-image: url('http://is3.mzstatic.com/image/thumb/Purple71/v4/44/b5/41/44b5419d-6bc4-5df1-247f-e0ce20f150b1/source/512x512bb.jpg')"></div>
+                <div class="al_header__media__img__bg aa_wait-to-load js-wait-to-load" style="background-image: url(
+                <%= @application.appimage.url %>)"></div>
             </div>
         </div>
 
@@ -12,7 +13,7 @@
             <div class="al_header__frame">
                 <div class="al_header__frame__canvas aa_clearfix">
                     <div class="al_title al_title--stick">
-                        <div class="al_header__app-icon" style="background-image: url(http://is3.mzstatic.com/image/thumb/Purple71/v4/44/b5/41/44b5419d-6bc4-5df1-247f-e0ce20f150b1/source/512x512bb.jpg)">
+                        <div class="al_header__app-icon" style="background-image: url(<%= @application.appimage.url %>)">
                             <span></span>
                             <span></span>
                         </div>
@@ -30,7 +31,7 @@
     <section id="top" class="al_content">
         <div class="al_content__main aa_clearfix">
             <div class="al_content__main__author aa_clear">
-                by <a class="underline aa_text--bold" href="#"><%= @application.company_name %></a>
+                by <a class="underline aa_text--bold" href="#"><%= @application.application_name %></a>
             </div>
 
             <div class="aa_text--center aa_opacity--05 aa_margin-t--5"><%= @application.created_at.strftime('%b %e,%Y') %></div>
