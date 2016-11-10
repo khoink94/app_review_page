@@ -1,0 +1,43 @@
+<!-- page content -->
+<div class="main-wrapper">
+    <header class="al_header">
+
+        <div class="al_header__media">
+            <div id="js-header-parallax" class="al_header__media__img">
+                <div class="al_header__media__img__bg aa_wait-to-load js-wait-to-load" style="background-image: url('http://is3.mzstatic.com/image/thumb/Purple71/v4/44/b5/41/44b5419d-6bc4-5df1-247f-e0ce20f150b1/source/512x512bb.jpg')"></div>
+            </div>
+        </div>
+
+        <div class="container-resp">
+            <div class="al_header__frame">
+                <div class="al_header__frame__canvas aa_clearfix">
+                    <div class="al_title al_title--stick">
+                        <div class="al_header__app-icon" style="background-image: url(http://is3.mzstatic.com/image/thumb/Purple71/v4/44/b5/41/44b5419d-6bc4-5df1-247f-e0ce20f150b1/source/512x512bb.jpg)">
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="aa_padding-lr--20 aa_padding-tb--20 aa_noverflow">
+                            <h1 class="al_title__main">
+                                <span><%= @application.application_name %></span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="top" class="al_content">
+        <div class="al_content__main aa_clearfix">
+            <div class="al_content__main__author aa_clear">
+                by <a class="underline aa_text--bold" href="#"><%= @application.company_name %></a>
+            </div>
+
+            <div class="aa_text--center aa_opacity--05 aa_margin-t--5"><%= @application.created_at.strftime('%b %e,%Y') %></div>
+        </div>
+        <div class="al_content__main__section container-resp aa_clearfix" style="margin: 0 200px; font-size: 18px; min-height: 200px;">
+            <p><%= @application.description %></p>
+        </div>
+    </section>
+</div>
+<!-- page content end -->

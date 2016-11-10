@@ -21,19 +21,21 @@
         </nav>
     
         <header class="aa_head aa_clearfix">
-            <div class="aa_header">
-                <div class="aa_position--relative aa_gr aa_gr--3">
-                    <div class="container-resp aa_clearfix">
-                        <div class="aa_header__text">
-                            <h1 class="aa_header__text__title aa_header__text__title--l aa__text--condensed">
-                                App Reviews
-                            </h1>
-    
-                            <p class="aa_header__text__intro">
-                                The list of App Reviews by HelloBugs
-                            </p>
-                        </div>
-                    </div>
+            <div class="slider-nav">
+                <div>
+                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
+                </div>
+                <div>
+                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
+                </div>
+                <div>
+                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
+                </div>
+                <div>
+                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
+                </div>
+                <div>
+                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
                 </div>
             </div>
         </header>
@@ -43,7 +45,7 @@
                 <!-- app reviews -->
                 <% @applications.each do |application| %>
                     <div class="aa_grid__elem">
-                        <a href="http://appadvice.com/review/weather-nerd" class="aa_ar aa_clearfix">
+                        <a href="<%= app_path %>?name=<%= application.application_name %>" class="aa_ar aa_clearfix">
                             <div class="aa_ar__score">
                                 <div class="aa_app__score" data-score="7.0">
                                     <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="75.30000000000001">
@@ -179,9 +181,27 @@
         })();
     </script>
     <!-- end chartbeat tag -->
-    <!-- Google Analyics -->
+    <!-- Slick Carousel -->
     <script type="text/javascript">
-        /* CloudFlare analytics upgrade */
+        $(document).ready(function(){
+          $('.slider-nav').slick({
+                autoplay: true,
+                centerMode: true,
+                slidesToShow: 1,
+                centerPadding: '345px',
+                prevArrow: '<span class="glyphicon glyphicon-circle-arrow-left"></span>',
+                nextArrow: '<span class="glyphicon glyphicon-circle-arrow-right"></span>'
+            });
+          $('.slider-nav').hover(function(){
+              $(this).find('.slick-arrow').animate({
+                    opacity: '1'
+                },'fast');
+          },function(){
+               $(this).find('.slick-arrow').animate({
+                    opacity: '0'
+                },'fast');
+          });  
+        });
     </script>
     <!-- script end -->
 <% end %>
