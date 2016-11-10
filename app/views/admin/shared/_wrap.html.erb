@@ -2,10 +2,12 @@
     <div class="sidebar content-box" style="display: block; color: blue;">
         <ul class="nav">
             <!-- Main menu -->
-            <li class="current"><i class="glyphicon glyphicon-home"></i><%= link_to "Home Page",  admin_users_path %></li>
+            <li class="current"><i class="glyphicon glyphicon-home"></i><%= link_to "Home Page",  root_path %></li>
             <li><i class="glyphicon glyphicon-folder-open"></i><%= link_to "Categories", admin_categories_path %></li>
             <li><i class="glyphicon glyphicon-cloud"></i><%= link_to "Applications", admin_applications_path %></li>
             <li><i class="glyphicon glyphicon-user"></i><%= link_to "Users", admin_users_path %></li>
+            <li><i class="glyphicon glyphicon-plus"></i><%= link_to "Add App", new_admin_application_path %></li>
+            <li><i class="glyphicon glyphicon-plus"></i><%= link_to "Add Category", new_admin_category_path %></li>
         </ul>
     </div>
 </div>

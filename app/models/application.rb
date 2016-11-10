@@ -2,6 +2,9 @@ class Application < ApplicationRecord
 	has_many :reviews
 	has_many :company_applications
 	has_many :application_categories
+  has_many :categories, :through => :application_categories
+  mount_uploader :appimage, AppimageUploader
+
 	
 	def self.app_search(search,category)
     if search
@@ -23,5 +26,6 @@ class Application < ApplicationRecord
       self.select("applications.*,companies.company_name").left_outer_joins(company_applications: :company)
     end
   end
+
   
 end
