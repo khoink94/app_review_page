@@ -1,5 +1,5 @@
 class AppController < ApplicationController
     def index
-        @application = Application.app_search(params[:name],'').first
+        @application = Application.find_by(application_name: params[:name])
     end        
 end
