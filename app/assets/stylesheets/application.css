@@ -228,3 +228,9 @@
 .slider-nav{
     cursor: pointer;
 }
+.item:hover{
+    background: #e2e2e2;
+    text-decoration: none;
+}
+.rate-list{
+}

@@ -117,7 +117,7 @@
                         <div class="form-group col-sm-4" style="margin-top: 15px;">
                             <label for="category">Category:</label>
                             <select class="form-control" id="category" name="category">
-                                <option value=''  selected>All</option>
+                                <option value='all'  selected>All</option>
                                 <% Category.all.each do |category| %>
                                 <option value='category_name'><%= category.category_name %></option>
                                 <% end %>
@@ -126,8 +126,8 @@
                         <div class="col-sm-4" style="margin-top: 15px;">
                             <label for="range">Minimum Rate:</label>
                             <div class="range range-success" style="margin-top: 5px; background-color: white;">
-                                <input type="range" name="rateinput" min="1" max="10" value="5" onchange="$('#rate-output').val(value+'*');">
-                                <output id="rate-output">5 *</output>
+                                <input type="range" name="minrating" min="0" max="5" value="3" onchange="$('#rate-output').val(value+'*');">
+                                <output id="rate-output">3 *</output>
                             </div>
                         </div>
                     </div>    

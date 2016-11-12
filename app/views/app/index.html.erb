@@ -1,43 +1,258 @@
 <!-- page content -->
 <div class="main-wrapper">
-    <header class="al_header">
-
-        <div class="al_header__media">
-            <div id="js-header-parallax" class="al_header__media__img">
-                <div class="al_header__media__img__bg aa_wait-to-load js-wait-to-load" style="background-image: url('http://is3.mzstatic.com/image/thumb/Purple71/v4/44/b5/41/44b5419d-6bc4-5df1-247f-e0ce20f150b1/source/512x512bb.jpg')"></div>
-            </div>
-        </div>
-
-        <div class="container-resp">
-            <div class="al_header__frame">
-                <div class="al_header__frame__canvas aa_clearfix">
-                    <div class="al_title al_title--stick">
-                        <div class="al_header__app-icon" style="background-image: url(http://is3.mzstatic.com/image/thumb/Purple71/v4/44/b5/41/44b5419d-6bc4-5df1-247f-e0ce20f150b1/source/512x512bb.jpg)">
-                            <span></span>
-                            <span></span>
-                        </div>
-
-                        <div class="aa_padding-lr--20 aa_padding-tb--20 aa_noverflow">
-                            <h1 class="al_title__main">
-                                <span><%= @application.application_name %></span>
-                            </h1>
+    <% if @applications.present? %>
+        <% @applications.each do |application| %>
+            <header class="al_header">
+                <div class="al_header__media">
+                    <div id="js-header-parallax" class="al_header__media__img">
+                        <div class="al_header__media__img__bg aa_wait-to-load js-wait-to-load" style="background-image: url('<%= application.appimage %>')"></div>
+                    </div>
+                </div>
+        
+                <div class="container-resp">
+                    <div class="al_header__frame">
+                        <div class="al_header__frame__canvas aa_clearfix">
+                            <div class="al_title al_title--stick">
+                                <div class="al_header__app-icon" style="background-image: url('<%= application.appimage %>')">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+        
+                                <div class="aa_padding-lr--20 aa_padding-tb--20 aa_noverflow">
+                                    <h1 class="al_title__main">
+                                        <span><%= application.application_name %></span>
+                                    </h1>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
-    <section id="top" class="al_content">
-        <div class="al_content__main aa_clearfix">
-            <div class="al_content__main__author aa_clear">
-                by <a class="underline aa_text--bold" href="#"><%= @application.company_name %></a>
-            </div>
-
-            <div class="aa_text--center aa_opacity--05 aa_margin-t--5"><%= @application.created_at.strftime('%b %e,%Y') %></div>
-        </div>
-        <div class="al_content__main__section container-resp aa_clearfix" style="margin: 0 200px; font-size: 18px; min-height: 200px;">
-            <p><%= @application.description %></p>
-        </div>
-    </section>
+            </header>
+            <section id="top" class="al_content" style="font-size: 15px;">
+                <div class="al_content__main aa_clearfix">
+                    <div class="al_content__main__author aa_clear">
+                        by <a class="underline aa_text--bold" href="#"><%= application.company_name %></a>
+                    </div>
+        
+                    <div class="aa_text--center aa_opacity--05 aa_margin-t--5"><%= application.created_at.strftime('%b %e,%Y') %></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div style="margin: 30px 10px; border-bottom: 1px solid #ccc;">
+                            <p><%= application.description %></p>
+                        </div>
+                        <div class="row" style="margin: 20px 0;">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                <h1 style="font-size: 60px; margin: 0;"><%= application.average_rating %></h1>
+                                <div style="background: url(<%= asset_path 'star1.png' %>); margin-left: 3px; width: 120px; height: 20px;">   
+                                    <div style="background: url(<%= asset_path 'star2.png' %>); width: <%= application.average_rating * 20 %>%; height: 20px;"></div>
+                                </div>
+                                <div style="margin-top: 10px; margin-left: 20px; font-size: 13px; color: #737373;">
+                                    <span class="glyphicon glyphicon-user"></span>&nbsp;<%= application.reviews.size %> total
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <ul style="color: #737373; font-size: 13px;">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-1" style="padding: 0; padding-left: 15px;">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                  5
+                                            </div>
+                                            <div class="col-md-11" style="padding: 0">
+                                                <div style="width: <%= application.rating_percent(5) %>%; background-color: yellowgreen"><span style="margin-left: 10px; color: #222"><%= application.rating_count(5) %></span></div>
+                                            </div>
+                                        </div>    
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-1" style="padding: 0; padding-left: 15px;">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                  4
+                                            </div>
+                                            <div class="col-md-11" style="padding: 0">
+                                                <div style="width: <%= application.rating_percent(4) %>%; background-color: chartreuse"><span style="margin-left: 10px; color: #222"><%= application.rating_count(4) %></span></div>
+                                            </div>
+                                        </div>    
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-1" style="padding: 0; padding-left: 15px;">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                  3
+                                            </div>
+                                            <div class="col-md-11" style="padding: 0">
+                                                <div style="width: <%= application.rating_percent(3) %>%; background-color: coral"><span style="margin-left: 10px; color: #222"><%= application.rating_count(3) %></span></div>
+                                            </div>
+                                        </div>    
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-1" style="padding: 0; padding-left: 15px;">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                  2
+                                            </div>
+                                            <div class="col-md-11" style="padding: 0">
+                                                <div style="width: <%= application.rating_percent(2) %>%; background-color: darkturquoise"><span style="margin-left: 10px; color: #222"><%= application.rating_count(2) %></span></div>
+                                            </div>
+                                        </div>    
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-1" style="padding: 0; padding-left: 15px;">
+                                                <span class="glyphicon glyphicon-star"></span>
+                                                  1
+                                            </div>
+                                            <div class="col-md-11" style="padding: 0">
+                                                <div style="width: <%= application.rating_percent(1) %>%; background-color: hotpink"><span style="margin-left: 10px; color: #222"><%= application.rating_count(1) %></span></div>
+                                            </div>
+                                        </div>    
+                                    </li>
+                                </ul>   
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <% if user_signed_in? %>
+                        <div style="padding-left: 100px;">
+                            <label for="input-rating" class="control-label">Rate This</label>
+                            <% if @review_logged.present? %>
+                                <input id="input-rating" class="rating" type="number" name="rating" value="<%= @review_logged.star.round(0) %>" data-min="0" data-max="5" data-step="1" data-size="xs">
+                            <% else %>
+                                <input id="input-rating" class="rating" type="number" name="rating" value="1" data-min="0" data-max="5" data-step="1" data-size="xs">
+                            <% end %>
+                        </div>
+                        <% end %>
+                        <div class="comments-container">
+                    		<ul id="comments-list" class="comments-list">
+                    		    <% if user_signed_in? %>
+                    		    <li>
+                    				<div class="comment-main-level">
+                    					<!-- Avatar -->
+                    					<div class="comment-avatar"><img src="
+                    					<% if current_user.avatar.present? %>
+                        			        <%= current_user.avatar %>
+                        			    <% else %>
+                    					    http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg
+                    					<% end %>    
+                    					" alt=""></div>
+                    					<!-- Contenedor del Comentario -->
+                    					<div class="comment-box">
+                    						<div class="comment-head">
+                    							<h6 class="comment-name"><a href="#"><%= current_user.email %></a></h6>
+                    						</div>
+                    						<div class="comment-content">
+                    						    <div class="form-group" style="margin-bottom: 0;">
+                    						        <label for="comment">Your review</label>
+                    						        <% if @review_logged.present? %>
+                    			                        <% if @review_logged.comment? %>
+                                                            <textarea class="form-control" rows="3" id="comment" name="comment"><%= @review_logged.comment %></textarea>
+                                                        <% else %>
+                                                            <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
+                                                        <% end %> 
+                                                    <% else %>  
+                                                        <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
+                                                    <% end %>    
+                                                    <button class="btn btn-primary" style="margin-top: 10px; margin-left: 600px;" onclick="formsubmit()">Submit</button>
+                                                </div>
+                    						</div>
+                    					</div>
+                    				</div>
+                    			</li>
+                    			<% end %>
+                    			<% if @review_logged.present? %>
+                    			    <% if @review_logged.comment? %>
+                            			<li>
+                            				<div class="comment-main-level">
+                            					<!-- Avatar -->
+                        					    <% if @review_logged.user.avatar.present? %>
+                        					        <div class="comment-avatar"><img src="<%= @review_logged.user.avatar %>" alt=""></div>
+                        					    <% else %>
+                        					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                        					    <% end %>   
+                            					<!-- Contenedor del Comentario -->
+                            					<div class="comment-box">
+                            						<div class="comment-head">
+                            							<h6 class="comment-name by-author"><a href="#"><%= @review_logged.user.email %></a></h6>
+                            							<span><%= @review_logged.updated_at.strftime('%b %e,%Y') %></span>
+                            						</div>
+                            						<div class="comment-content">
+                            							<%= @review_logged.comment %>
+                            						</div>
+                            					</div>
+                            				</div>
+                            			</li>
+                            		<% end %>	
+                    			<% end %>
+                    			<% if @reviews.present? %>
+                        			<% @reviews.each do |review| %>
+                        			    <% if review.comment.present? %>
+                                			<li>
+                                				<div class="comment-main-level">
+                                					<!-- Avatar -->
+                                					<% if review.user.avatar.present? %>
+                            					        <div class="comment-avatar"><img src="<%= review.user.avatar %>" alt=""></div>
+                            					    <% else %>
+                            					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                            					    <% end %> 
+                                					<!-- Contenedor del Comentario -->
+                                					<div class="comment-box">
+                                						<div class="comment-head">
+                                							<h6 class="comment-name"><a href="#"><%= review.user.email %></a></h6>
+                                							<span><%= review.updated_at.strftime('%b %e,%Y') %></span>
+                                						</div>
+                                						<div class="comment-content">
+                                							<%= review.comment %>
+                                						</div>
+                                					</div>
+                                				</div>
+                                			</li>
+                                		<% end %>	
+                        			<% end %>
+                    			<% end %>
+                    		</ul>
+                    	</div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </section>
+        <% end %>
+    <% else %>
+    <h2>Sorry, there is nothing to show!</h2>
+    <% end %>
 </div>
 <!-- page content end -->
+<% if @applications.present? %>
+    <% if user_signed_in? %>
+        <% @applications.each do |application| %>
+            <script>
+                $(document).ready(function(){
+                    $("#input-rating").rating();
+                    $('div .clear-rating').remove();
+                });
+                
+                function formsubmit() {
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: '/app/update',
+                        contentType: 'application/json',
+                        data: $.param({
+                            app_id: <%= application.id %>,
+                            user_id: <%= current_user.id %>,
+                            rating: $('#input-rating').val(),
+                            comment: $('#comment').val(),
+                        }),
+                        success: function(msg) {
+                            location.reload();
+                        },
+                        error: function(){
+                            alert ("Error");
+                        }
+                    });
+                }
+            </script>
+        <% end %>    
+    <% end %>
+<% end %>    

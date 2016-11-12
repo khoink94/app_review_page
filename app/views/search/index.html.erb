@@ -36,7 +36,7 @@
                       <div class="form-group col-sm-4" style="margin-top: 15px;">
                           <label for="category">Category:</label>
                           <select class="form-control" id="category" name="category">
-                              <option value=''  selected>All</option>
+                              <option value='all'  selected>All</option>
                               <% @categories.each do |category| %>
                                 <option value="<%= category.category_name %>"><%= category.category_name %></option>
                               <% end %>  
@@ -45,8 +45,8 @@
                       <div class="col-sm-4" style="margin-top: 15px;">
                           <label for="range">Minimum Rate:</label>
                           <div class="range range-success" style="margin-top: 5px; background-color: white;">
-                              <input type="range" name="rateinput" min="1" max="10" value="<%= @rateinput %>" onchange="$('#rate-output').val(value+'*');">
-                              <output id="rate-output"><%= @rateinput %> *</output>
+                              <input type="range" name="minrating" min="0" max="5" value="<%= @minrating %>" onchange="$('#rate-output').val(value+'*');">
+                              <output id="rate-output"><%= @minrating %> *</output>
                           </div>
                       </div>
                   </div>    
@@ -60,89 +60,90 @@
           </div>
           <div class="show-app container-resp aa_grid aa_grid--2-m aa_grid--3-l aa_grid--4-xl aa_padding-t--20">
               <!-- app reviews -->
-              <% @applications.each do |application| %>
-                  <div class="aa_grid__elem">
-                      <a href="http://appadvice.com/review/weather-nerd" class="aa_ar aa_clearfix">
-                          <div class="aa_ar__score">
-                              <div class="aa_app__score" data-score="7.0">
-                                  <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="75.30000000000001">
-                                      <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                                      <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
+              <% if @applications.present? %>
+                <% @applications.each do |application| %>
+                    <div class="aa_grid__elem">
+                        <a href="<%= app_path %>?id=<%= application.id %>" class="aa_ar aa_clearfix item">
+                            <div class="aa_ar__score">
+                                <div class="aa_app__score" data-score="<%= application.average_rating %>">
+                                    <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="<%= 250 - application.average_rating * 50 %>">
+                                        <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
+                                        <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
                                     </svg>
-                              </div>
-                          </div>
-  
-                          <div class="aa_ar__icon">
-                              <div class="aa_app__icon aa_bg aa_grad--5">
-                                  <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://is4.mzstatic.com/image/pf/us/r30/Purple3/v4/25/c8/64/25c864cf-5743-0e03-67dc-ba49fdf2213e/mzl.npltjthd.175x175-75.png)"></div>
-                              </div>
-                          </div>
-  
-                          <div class="aa_ar__text">
-                              <div class="aa_ar__text__">
-                                  <h3 class="aa_ar__text__title aa_text--truncate">
-                                      <%= application.application_name %>
-                                  </h3>
-  
-                                  <div class="aa_ar__text__developer aa_text--truncate">
-                                      <%= application.company_name %>
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <p class="aa_ar__details">
-                              <%= application.description %>
-                          </p>
-                      </a>
-                  </div>
+                                </div>
+                            </div>
+    
+                            <div class="aa_ar__icon">
+                                <div class="aa_app__icon aa_bg aa_grad--5">
+                                    <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url('<%= application.appimage %>')"></div>
+                                </div>
+                            </div>
+    
+                            <div class="aa_ar__text">
+                                <div class="aa_ar__text__">
+                                    <h3 class="aa_ar__text__title aa_text--truncate">
+                                        <%= application.application_name %>
+                                    </h3>
+    
+                                    <div class="aa_ar__text__developer aa_text--truncate">
+                                        <%= application.company_name %>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <p class="aa_ar__details">
+                                <%= application.description %>
+                            </p>
+                        </a>
+                    </div>
                   <% end %>
+              <% else %>
+                <h3>Sorry, no results found!</h3>
+              <% end %>
   
                   <!-- app reviews end -->
           </div>
           <div class="show-author container-resp aa_grid aa_grid--2-m aa_grid--3-l aa_grid--4-xl aa_padding-t--20">
               <!-- app reviews -->
-              <% @companies.each do |company| %>
-                  <div class="aa_grid__elem">
-                      <a href="http://appadvice.com/review/weather-nerd" class="aa_ar aa_clearfix">
-                          <div class="aa_ar__score">
-                              <div class="aa_app__score" data-score="7.0">
-                                  <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="75.30000000000001">
-                                      <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
-                                      <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-                                    </svg>
-                              </div>
-                          </div>
-  
-                          <div class="aa_ar__icon">
-                              <div class="aa_app__icon aa_bg aa_grad--5">
-                                  <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://is4.mzstatic.com/image/pf/us/r30/Purple3/v4/25/c8/64/25c864cf-5743-0e03-67dc-ba49fdf2213e/mzl.npltjthd.175x175-75.png)"></div>
-                              </div>
-                          </div>
-  
-                          <div class="aa_ar__text">
-                              <div class="aa_ar__text__">
-                                  <h3 class="aa_ar__text__title aa_text--truncate">
-                                      <%= company.company_name %>
-                                  </h3>
-  
-                                  <div class="aa_ar__text__developer aa_text--truncate">
-                                      <%= company.address %>
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <p class="aa_ar__details">
-                              <%= company.description %>
-                          </p>
-                      </a>
-                  </div>
+              <% if @companies.present? %>
+                <% @companies.each do |company| %>
+                    <div class="aa_grid__elem">
+                        <a href="http://appadvice.com/review/weather-nerd" class="aa_ar aa_clearfix item">
+                            <div class="aa_ar__icon">
+                                <div class="aa_app__icon aa_bg aa_grad--5">
+                                    <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://is4.mzstatic.com/image/pf/us/r30/Purple3/v4/25/c8/64/25c864cf-5743-0e03-67dc-ba49fdf2213e/mzl.npltjthd.175x175-75.png)"></div>
+                                </div>
+                            </div>
+    
+                            <div class="aa_ar__text">
+                                <div class="aa_ar__text__">
+                                    <h3 class="aa_ar__text__title aa_text--truncate">
+                                        <%= company.company_name %>
+                                    </h3>
+    
+                                    <div class="aa_ar__text__developer aa_text--truncate">
+                                        <%= company.address %>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <p class="aa_ar__details">
+                                <%= company.description %>
+                            </p>
+                        </a>
+                    </div>
                   <% end %>
+                <% else %>
+                  <h3>Sorry, no results found!</h3>
+                <% end %>
   
                   <!-- app reviews end -->
           </div>
-          <div class="paginate-app" style="margin-left: 500px;">
-              <%= will_paginate @applications, :param_name => 'page_app' %>
-          </div>
+          <% if @applications.present? %>
+            <div class="paginate-app" style="margin-left: 500px;">
+                <%= will_paginate @applications, :param_name => 'page_app' %>
+            </div>
+          <% end %>  
           <div class="paginate-author" style="margin-left: 500px;">
               <%= will_paginate @companies, :param_name => 'page_com' %>
           </div>

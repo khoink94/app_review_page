@@ -22,21 +22,13 @@
     
         <header class="aa_head aa_clearfix">
             <div class="slider-nav">
-                <div>
-                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
-                </div>
-                <div>
-                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
-                </div>
-                <div>
-                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
-                </div>
-                <div>
-                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
-                </div>
-                <div>
-                    <%= image_tag("app/healthcare-technology.jpg", :style => "width: 650px; height: 250px;") %>
-                </div>
+                <% @applications_orderby_rating[0 .. 4].each do |application| %> 
+                    <div>
+                        <a href="/app?id=<%= application.id %>">
+                            <img style="width: 650px; height: 250px;" src="<%= application.appimage %>">
+                        </a>    
+                    </div>
+                <% end %>    
             </div>
         </header>
     
@@ -45,19 +37,19 @@
                 <!-- app reviews -->
                 <% @applications.each do |application| %>
                     <div class="aa_grid__elem">
-                        <a href="<%= app_path %>?name=<%= application.application_name %>" class="aa_ar aa_clearfix">
+                        <a href="<%= app_path %>?id=<%= application.id %>" class="aa_ar aa_clearfix item">
                             <div class="aa_ar__score">
-                                <div class="aa_app__score" data-score="7.0">
-                                    <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="75.30000000000001">
+                                <div class="aa_app__score" data-score="<%= application.average_rating %>">
+                                    <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="<%= 250 - application.average_rating * 50 %>">
                                         <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
                                         <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
-                                      </svg>
+                                    </svg>
                                 </div>
                             </div>
     
                             <div class="aa_ar__icon">
                                 <div class="aa_app__icon aa_bg aa_grad--5">
-                                    <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url(http://is4.mzstatic.com/image/pf/us/r30/Purple3/v4/25/c8/64/25c864cf-5743-0e03-67dc-ba49fdf2213e/mzl.npltjthd.175x175-75.png)"></div>
+                                    <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url('<%= application.appimage %>')"></div>
                                 </div>
                             </div>
     
@@ -187,6 +179,7 @@
           $('.slider-nav').slick({
                 autoplay: true,
                 centerMode: true,
+                draggable: false,
                 slidesToShow: 1,
                 centerPadding: '345px',
                 prevArrow: '<span class="glyphicon glyphicon-circle-arrow-left"></span>',
