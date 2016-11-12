@@ -23,8 +23,8 @@ end
 		                description: "OK!")
 end
 
-100.times do |n|
-	Category.create!(category_name: "Cat#{n}")
+10.times do |n|
+	Category.create!(category_name: "Category#{n}")
 end
 
 10.times do |n|
