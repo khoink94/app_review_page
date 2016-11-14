@@ -15,6 +15,7 @@ class Application < ApplicationRecord
           .left_outer_joins(application_categories: :category)
           .where('application_name LIKE ? OR applications.description LIKE ?', "%#{search}%", "%#{search}%")
           .order("applications.created_at DESC")
+          .group("applications.id")
       else
         self
           .select("applications.*,companies.company_name")
@@ -23,6 +24,7 @@ class Application < ApplicationRecord
           .where('application_name LIKE ? OR applications.description LIKE ?', "%#{search}%", "%#{search}%")
           .where('category_name = ?', category)
           .order("applications.created_at DESC")
+          .group("applications.id")
       end    
     else
       self
@@ -38,6 +40,7 @@ class Application < ApplicationRecord
       .left_outer_joins(company_applications: :company)
       .left_outer_joins(application_categories: :category)
       .where('applications.id LIKE ?', id)
+      .group("applications.id")
   end
   
   def average_rating
