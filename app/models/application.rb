@@ -4,6 +4,8 @@ class Application < ApplicationRecord
 	has_many :application_categories
   has_many :categories, :through => :application_categories
   mount_uploader :appimage, AppimageUploader
+  validates :application_name, :presence => true
+
 
 	
 	def self.app_search(search,category = 'all')
