@@ -14,10 +14,10 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="input-group form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                   <button class="btn btn-primary" type="button">Search</button>
-                                 </span>
+                                <!--<input type="text" class="form-control" placeholder="App name...">-->
+                                <%= form_tag(admin_applications_path, :method => 'get') do %>
+                                    <%= text_field_tag :application_name, nil, placeholder: 'App name...' , class: "form-control" %>
+                                <% end %>
                             </div>
                         </div>
                     </div>
