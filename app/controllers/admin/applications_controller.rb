@@ -2,10 +2,10 @@ class Admin::ApplicationsController < ApplicationController
 	before_action :authenticate_user!, :verify_admin
 	before_action :find_app, except: [:index, :new, :create]
 	def index
-		if params[:application_name].nil?
+		if params[:application_hint].nil?
 			@applications = Application.paginate(page: params[:page], :per_page => 11)
 		else
-			@applications = Application.where("application_name LIKE :name", name: "%#{params[:application_name]}%")
+			@applications = Application.where("application_name LIKE :name", name: "%#{params[:application_hint]}%")
 							.paginate(page: params[:page], :per_page => 11)
 		end
 	end
