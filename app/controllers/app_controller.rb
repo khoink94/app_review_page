@@ -11,8 +11,8 @@ class AppController < ApplicationController
     end
     
     def update
-        if Review.find_by user_id: params[:user_id]
-            Review.where('user_id LIKE ?', params[:user_id]).update_all(
+        if Review.find_by user_id: params[:user_id], application_id: params[:app_id]
+            Review.where('user_id LIKE ? and application_id LIKE ?', params[:user_id], params[:app_id]).update_all(
                 :user_id => params[:user_id],
                 :application_id => params[:app_id],
                 :comment => params[:comment],
