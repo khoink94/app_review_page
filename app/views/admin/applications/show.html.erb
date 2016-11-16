@@ -33,7 +33,7 @@
 					</div>
 	  				<div class="panel-body">
               <div class="panel-body">
-                <%= @application.description %>
+                <%= raw(@application.description) %>
               </div>
               <p>
                 <%= link_to "Delete", admin_application_path, method: :delete, data: { confirm: "You sure?"}, class: "btn btn-danger" %>

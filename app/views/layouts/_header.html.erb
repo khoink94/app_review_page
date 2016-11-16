@@ -11,17 +11,20 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="input-group form">
-                                <!--<input type="text" class="form-control" placeholder="App name...">-->
-                                <%= form_tag(admin_applications_path, :method => 'get') do %>
-                                    <%= text_field_tag :application_name, nil, placeholder: 'App name...' , class: "form-control" %>
-                                <% end %>
+                    <form action="<%= admin_applications_path %>" method="get">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group form">
+                                    <!--<input type="text" class="form-control" placeholder="App name...">-->
+                                    <%= text_field_tag :application_hint, nil, class: "form-control" %>
+                                    <span class="input-group-btn">
+                                      <button class="btn btn-primary" type="submit">Search</button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </form>
+                </div>  
                 <div class="col-md-2">
                     <div class="navbar navbar-inverse" role="banner">
                         <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
