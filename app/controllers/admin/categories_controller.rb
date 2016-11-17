@@ -7,14 +7,24 @@ class Admin::CategoriesController < ApplicationController
 
 	def new
 		@category = Category.new
+		@applications = Application.all
 	end
 
 	def create
 		@category = Category.new category_params
 		if @category.save
-			flash[:success] = "Application created"
+			if params[:application_ids].present?
+				params[:application_ids].each do |id|
+					application = Application.find_by id: id
+					unless application.nil? || @category.applications.include?(application)
+						@category.applications << application
+					end
+				end
+			end
+			flash[:success] = "Category created"
 			redirect_to admin_categories_path
 		else
+			load_applications
 			render :new
 		end
 	end
@@ -51,5 +61,9 @@ class Admin::CategoriesController < ApplicationController
 
 	def category_params
 		params.require(:category).permit :category_name, :categoryimage
+	end
+
+	def load_applications
+		@applications = Application.all
 	end
 end

@@ -16,6 +16,12 @@
         <%= f.hidden_field :categoryimage_cache %>
       </div>
       <br>
+      
+      <%= select_tag :application_ids, 
+      options_from_collection_for_select(@applications, "id", "application_name"), 
+      { class: "form-control input-sm selectpicker" , :multiple => true, :size => 4} %>
+      <br>
+
       <p> 
         <%= f.submit "Submit", class: "btn btn-primary" %>
       </p>
