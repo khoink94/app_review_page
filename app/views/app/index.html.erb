@@ -31,7 +31,10 @@
             <section id="top" class="al_content" style="font-size: 15px;">
                 <div class="al_content__main aa_clearfix">
                     <div class="al_content__main__author aa_clear">
-                        by <a class="underline aa_text--bold" href="#"><%= application.company_name %></a>
+                        Category: 
+                        <% application.categories.each do |category| %>
+                            <a class="underline aa_text--bold" href="/category?category=<%= category.category_name %>"><%= category.category_name %></a>,
+                        <% end %>
                     </div>
         
                     <div class="aa_text--center aa_opacity--05 aa_margin-t--5"><%= application.created_at.strftime('%b %e,%Y') %></div>
@@ -127,16 +130,14 @@
                         <div class="comments-container">
                     		<ul id="comments-list" class="comments-list">
                     		    <% if user_signed_in? %>
-                    		    <li>
+                    		    <li class="comment-input">
                     				<div class="comment-main-level">
                     					<!-- Avatar -->
-                    					<div class="comment-avatar"><img src="
                     					<% if current_user.avatar.present? %>
-                        			        <%= current_user.avatar %>
-                        			    <% else %>
-                    					    http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg
-                    					<% end %>    
-                    					" alt=""></div>
+                					        <div class="comment-avatar"><img src="<%= current_user.avatar %>" alt=""></div>
+                					    <% else %>
+                					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                					    <% end %>
                     					<!-- Contenedor del Comentario -->
                     					<div class="comment-box">
                     						<div class="comment-head">
@@ -144,46 +145,51 @@
                     						</div>
                     						<div class="comment-content">
                     						    <div class="form-group" style="margin-bottom: 0;">
-                    						        <label for="comment">Your review</label>
                     						        <% if @review_logged.present? %>
                     			                        <% if @review_logged.comment? %>
-                                                            <textarea class="form-control" rows="3" id="comment" name="comment"><%= @review_logged.comment %></textarea>
+                                                            <textarea class="form-control" rows="1" id="comment" name="comment"><%= @review_logged.comment %></textarea>
                                                         <% else %>
-                                                            <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
+                                                            <textarea class="form-control" rows="1" id="comment" name="comment"></textarea>
                                                         <% end %> 
                                                     <% else %>  
-                                                        <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
+                                                        <textarea class="form-control" rows="1" id="comment" name="comment"></textarea>
                                                     <% end %>    
-                                                    <button class="btn btn-primary" style="margin-top: 10px; margin-left: 600px;" onclick="formsubmit()">Submit</button>
                                                 </div>
                     						</div>
                     					</div>
                     				</div>
                     			</li>
-                    			<% end %>
-                    			<% if @review_logged.present? %>
-                    			    <% if @review_logged.comment? %>
-                            			<li>
-                            				<div class="comment-main-level">
-                            					<!-- Avatar -->
-                        					    <% if @review_logged.user.avatar.present? %>
-                        					        <div class="comment-avatar"><img src="<%= @review_logged.user.avatar %>" alt=""></div>
-                        					    <% else %>
-                        					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-                        					    <% end %>   
-                            					<!-- Contenedor del Comentario -->
-                            					<div class="comment-box">
-                            						<div class="comment-head">
-                            							<h6 class="comment-name by-author"><a href="#"><%= @review_logged.user.email %></a></h6>
-                            							<span><%= @review_logged.updated_at.strftime('%b %e,%Y') %></span>
-                            						</div>
-                            						<div class="comment-content">
-                            							<%= @review_logged.comment %>
-                            						</div>
-                            					</div>
-                            				</div>
-                            			</li>
-                            		<% end %>	
+                    			<li class="comment-display">
+                    				<div class="comment-main-level">
+                    					<!-- Avatar -->
+                					    <% if current_user.avatar.present? %>
+                					        <div class="comment-avatar"><img src="<%= current_user.avatar %>" alt=""></div>
+                					    <% else %>
+                					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                					    <% end %> 
+                    					<!-- Contenedor del Comentario -->
+                    					<div class="comment-box">
+                    						<div class="comment-head">
+                    							<h6 class="comment-name by-author"><a href="#"><%= current_user.email %></a></h6>
+                    							<span>
+                    							<% if @review_logged.present? %>     
+                        							<% if @review_logged.updated_at.present? %>     
+                        							    <%= @review_logged.updated_at.strftime('%b %e,%Y') %>
+                        							<% end %>
+                        						<% end %>	
+                    							</span>
+                    							<div style="float: right"><span class="comment-edit" style="margin-right: 10px; cursor: pointer;">Edit</span><span class="comment-delete" style="cursor: pointer;">Delete</span></div>
+                    						</div>
+                    						<div class="comment-content" style="overflow: auto;">
+                    						<% if @review_logged.present? %>      
+                        						<% if @review_logged.comment.present? %>    
+                        							<%= @review_logged.comment %>
+                        						<% end %>	
+                        					<% end %>	
+                    						</div>
+                    					</div>
+                    				</div>
+                    			</li>
                     			<% end %>
                     			<% if @reviews.present? %>
                         			<% @reviews.each do |review| %>
@@ -202,7 +208,7 @@
                                 							<h6 class="comment-name"><a href="#"><%= review.user.email %></a></h6>
                                 							<span><%= review.updated_at.strftime('%b %e,%Y') %></span>
                                 						</div>
-                                						<div class="comment-content">
+                                						<div class="comment-content" style="overflow: auto;">
                                 							<%= review.comment %>
                                 						</div>
                                 					</div>
@@ -230,9 +236,30 @@
                 $(document).ready(function(){
                     $("#input-rating").rating();
                     $('div .clear-rating').remove();
+                    if($('#comment').val() != ''){
+                        $('.comment-input').hide();
+                    }else{
+                        $('.comment-display').hide();
+                    }
+                    $('.rating').click(function(){
+                        formsubmit0();
+                    });
+                    $('#comment').keypress(function (e) {
+                        if (e.which == 13) {
+                            formsubmit1();
+                            return false; 
+                        }
+                    });
+                    $('.comment-edit').click(function(){
+                        $('.comment-display').hide();
+                        $('.comment-input').show();
+                    });
+                    $('.comment-delete').click(function(){
+                        formsubmit2();
+                    });
                 });
                 
-                function formsubmit() {
+                function formsubmit0() {
                     $.ajax({
                         type: "GET",
                         dataType: "json",
@@ -245,7 +272,53 @@
                             comment: $('#comment').val(),
                         }),
                         success: function(msg) {
-                            location.reload();
+                
+                        },
+                        error: function(){
+                            alert ("Error");
+                        }
+                    });
+                }
+                
+                function formsubmit1() {
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: '/app/update',
+                        contentType: 'application/json',
+                        data: $.param({
+                            app_id: <%= application.id %>,
+                            user_id: <%= current_user.id %>,
+                            rating: $('#input-rating').val(),
+                            comment: $('#comment').val(),
+                        }),
+                        success: function(msg) {
+                            $('.comment-display .comment-content').text($('#comment').val());
+                            $('.comment-display').show();
+                            $('.comment-input').hide();
+                        },
+                        error: function(){
+                            alert ("Error");
+                        }
+                    });
+                }
+                
+                function formsubmit2() {
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: '/app/update',
+                        contentType: 'application/json',
+                        data: $.param({
+                            app_id: <%= application.id %>,
+                            user_id: <%= current_user.id %>,
+                            rating: $('#input-rating').val(),
+                            comment: '',
+                        }),
+                        success: function(msg) {
+                            $('.comment-input textarea').val('');
+                            $('.comment-display').hide();
+                            $('.comment-input').show();
                         },
                         error: function(){
                             alert ("Error");

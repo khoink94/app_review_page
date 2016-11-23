@@ -233,5 +233,12 @@
     background: #e2e2e2;
     text-decoration: none;
 }
+.item:hover .aa_ar__text__title{
+    color: blueviolet;
+}
 .rate-list{
+}
+.edit-avatar img{
+    height: 200px;
+    margin: 20px;
 }

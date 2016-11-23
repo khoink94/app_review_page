@@ -1,5 +1,5 @@
-<div class="main-wrapper" style="margin-bottom: 100px;">
-  <div class="col-sm-6 col-sm-offset-3">
+<div class="main-wrapper" style="margin-bottom: 50px;">
+  <div class="col-sm-6 col-sm-offset-3" style="float: none;">
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
    
    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -14,7 +14,8 @@
        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
      <% end %>
      
-    <div class="field">
+     
+    <div class="field edit-avatar">
        <%= f.label :avatar %>
        <%= image_tag current_user.avatar_url if current_user.avatar? %>
        <%= f.file_field :avatar, class: "form-control" %>
@@ -40,15 +41,11 @@
        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
      </div>
    
-     <div class="actions">
-       <%= f.submit "Update", class: "btn btn-primary" %>
+     <div class="actions" style="margin-top: 10px;">
+       <%= f.submit "Update", class: "btn btn-success", style: "margin-right: 10px;" %>
+       <%= button_to "Delete this account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger", style: "margin-right: 10px;" %>
+       <%= link_to "Back", :back, class: "btn btn-primary" %>
      </div>
    <% end %>
-   
-   
-   
-   <h4>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary" %></h4>
-   
-   <%= link_to "Back", :back, class: "btn btn-primary" %>
   </div>
 </div>
