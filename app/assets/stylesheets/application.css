@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+@import "font-awesome-sprockets";
+@import "font-awesome";
 .search-button{
     padding: 10px 10px 5px;
     font-size: 22px;
