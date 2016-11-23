@@ -1,5 +1,5 @@
 <div class="main-wrapper">
-  <div class="col-sm-6 col-sm-offset-3">
+  <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3" >
     <h2>Log in</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,13 +15,13 @@
       </div>
 
       <% if devise_mapping.rememberable? -%>
-        <div class="field">
+        <div class="field" style="text-align: center">
           <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
         </div>
         <% end -%>
 
-          <div class="actions">
+          <div class="actions" style="text-align: center">
             <%= f.submit "Log in", class: "btn btn-primary" %>
           </div>
           <% end %>
