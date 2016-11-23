@@ -10,6 +10,17 @@ $(document).ready(function(){
             search_click = 0;
         }    
     });
+    $('.header-profile').hover(function(){
+        $(this).find('.dropdown-menu').animate({
+            top: '57px'
+            ,opacity: '1'
+        },'fast');
+    },function(){
+        $(this).find('.dropdown-menu').animate({
+            top: '65px'
+            ,opacity: '0'
+        },'fast');
+    });
     $('.am__elem--sub').hover(function(){
         $(this).find('.am__elem__sub').animate({
             top: '50px'

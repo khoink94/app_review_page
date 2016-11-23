@@ -1,12 +1,13 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for [:admin, @application] do |f| %>
+      <%= render "admin/shared/error_messages", object: @application %>
 
       <%= f.label :application_name %>
       <%= f.text_field :application_name, class: "form-control" %>
 
       <%= f.label :description %>
-      <%= f.text_field :description, class: "form-control" %>
+      <%= f.text_area :description, class: "ckeditor" %>
 
       <div class="field">
          <%= f.label :appimage %>
@@ -18,16 +19,14 @@
       </div>
       <br>
 
-      <%= f.collection_check_boxes :category_ids, @categories, :id, :category_name do |s| %>
-        <div class="checkbox">
-          <%= s.check_box %>
-          <%= s.label %>
-        </div>
-      <% end %>
-
+      <%= select_tag :category_ids, 
+      options_from_collection_for_select(@categories, "id", "category_name"), 
+      { class: "form-control input-sm selectpicker" , :multiple => true, :size => 4} %>
+      <br>
       <p> 
         <%= f.submit "Submit", class: "btn btn-primary" %>
       </p>
     <% end %>
   </div>
 </div>
+  

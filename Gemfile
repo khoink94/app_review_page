@@ -16,7 +16,11 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'mini_magick'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'ckeditor'
+gem 'paperclip'
+
 
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'

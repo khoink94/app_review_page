@@ -2498,8 +2498,8 @@ h2.al_title__main {}
 
 .al_content ul,
 .al_content ol {
-  margin-left: 20px;
-  padding-left: 20px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
 .al_content ul>li,
@@ -2513,7 +2513,7 @@ h2.al_title__main {}
 }
 
 .al_content ul>li:before {
-  content: '';
+  content: none;
   position: absolute;
   width: 1rem;
   height: 1rem;
@@ -10926,7 +10926,7 @@ h3.aa_cg__text__title {
 
 @media only screen and (min-width: 1224px) {
   .container-resp {
-    margin: 0 100px;
+    margin: 0 50px;
     max-width: none;
   }
 }

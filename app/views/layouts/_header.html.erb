@@ -11,17 +11,20 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="input-group form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                   <button class="btn btn-primary" type="button">Search</button>
-                                 </span>
+                    <form action="<%= admin_applications_path %>" method="get">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group form">
+                                    <!--<input type="text" class="form-control" placeholder="App name...">-->
+                                    <%= text_field_tag :application_hint, nil, class: "form-control" %>
+                                    <span class="input-group-btn">
+                                      <button class="btn btn-primary" type="submit">Search</button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </form>
+                </div>  
                 <div class="col-md-2">
                     <div class="navbar navbar-inverse" role="banner">
                         <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
@@ -40,21 +43,8 @@
     <!-- main menu -->
         <nav id="js-nav" class="am am--aa">
             <div class="container-resp">
-                <div class="am__elem aa_pull--left am__elem--sub am__elem--click js-nav-open">
-                    <div class="am__elem__icon aai-appadvice"></div>
-            
-                    <div class="am__elem__down"></div>
-            
-                    <div class="am__elem__sub aa_padding-lr--20 dark">
-                        <a href="/tv" class="am__elem__sub__elem am__elem__sub__elem--big aai-appadvice">App<strong>Advice</strong>/TV</a>
-            
-                        <a href="http://watchaware.com/" class="am__elem__sub__elem am__elem__sub__elem--big aai-watchaware">Watch<strong>Aware</strong></a>
-            
-                        <a href="/game" class="am__elem__sub__elem am__elem__sub__elem--big aai-nowgaming">Now<strong>Gaming</strong></a>
-                    </div>
-                </div>
                 <a href="<%= root_path %>" class="am__elem aa_pull--left aa_padding-l--0">
-                    <div class="am__elem__text aa_text--24 aa_text--light">App<span class="aa_text--bold">Advice</span></div>
+                    <div class="am__elem__text aa_text--24 aa_text--light">App<span class="aa_text--bold">Review</span></div>
                 </a>
         
                 <div class="am__elem aa_pull--right am__elem--click js-dark-btn %&gt;">
@@ -66,37 +56,24 @@
                             <div class="btn btn-lg search-button">
                                 <span class="glyphicon glyphicon-search"></span>
                             </div>
-        
-                            <div class="am__elem am__elem--sub am__elem--click js-nav-open no-record-s">
-                                <div class="am__elem__text">BEST OF</div>
-        
-                                <div class="am__elem__down aa_margin-l--5"></div>
-        
-                                <div class="am__elem__sub am__elem__sub--right">
-                                    <a href="http://appadvice.com/collections/" class="am__elem__sub__elem">iOS apps</a>
-        
-        
-                                    <a href="http://appadvice.com/messages/collections/" class="am__elem__sub__elem">Messages apps</a>
-        
-                                    <a href="http://appadvice.com/tv/collections/" class="am__elem__sub__elem">TV apps</a>
-                                </div>
-                            </div>
-        
-                            <a href="http://appadvice.com/reviews" class="am__elem active">
-                                <div class="am__elem__text">REVIEWS</div>
-                            </a>
+                            
                             <% if user_signed_in? %>
-                              <div class="am__elem__text" style="padding-left: 10px;"><%= link_to "EDIT", edit_user_registration_path %>
-                              
-                              </div>
-                              <div class="am__elem__text" style="margin-left: 15px"><%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %>
-                              </div>
+                                <div class="header-profile dropdown">
+                					<% if current_user.avatar.present? %>
+                    			        <img class="header-avatar" src="<%= current_user.avatar %>">
+                    			    <% else %>
+                					    <img class="header-avatar" src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg">
+                					<% end %>
+                    				<span><%= current_user.email %></span>
+                    				<span class="glyphicon glyphicon-triangle-bottom header-triangle-bottom"></span>
+                    				<ul class="dropdown-menu">
+                                        <li><%= link_to "EDIT", edit_user_registration_path %></li>
+                                        <li><%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %></li>
+                                    </ul>
+                                </div>
                             <% else %>
-                              <div class="am__elem__text" style="padding-left: 10px;"><%= link_to "SIGN IN", user_session_path %>
-                              
-                              </div>
-                              <div class="am__elem__text" style="margin-left: 15px"><%= link_to "SIGN UP", new_user_registration_path %>
-                              </div>
+                                <div class="am__elem__text" style="padding-left: 10px;"><%= link_to "SIGN IN", user_session_path %></div>
+                                <div class="am__elem__text" style="margin-left: 15px"><%= link_to "SIGN UP", new_user_registration_path %></div>
                             <% end %>
 
                         </div>
@@ -117,17 +94,17 @@
                         <div class="form-group col-sm-4" style="margin-top: 15px;">
                             <label for="category">Category:</label>
                             <select class="form-control" id="category" name="category">
-                                <option value=''  selected>All</option>
+                                <option value='all'  selected>All</option>
                                 <% Category.all.each do |category| %>
-                                <option value='category_name'><%= category.category_name %></option>
+                                <option value='<%= category.category_name %>'><%= category.category_name %></option>
                                 <% end %>
                             </select>
                         </div>
                         <div class="col-sm-4" style="margin-top: 15px;">
                             <label for="range">Minimum Rate:</label>
                             <div class="range range-success" style="margin-top: 5px; background-color: white;">
-                                <input type="range" name="rateinput" min="1" max="10" value="5" onchange="$('#rate-output').val(value+'*');">
-                                <output id="rate-output">5 *</output>
+                                <input type="range" name="minrating" min="0" max="5" value="0" onchange="$('#rate-output').val(value+'*');">
+                                <output id="rate-output">0 *</output>
                             </div>
                         </div>
                     </div>    

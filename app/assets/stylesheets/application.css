@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+@import "font-awesome-sprockets";
+@import "font-awesome";
 .search-button{
     padding: 10px 10px 5px;
     font-size: 22px;
@@ -191,6 +193,7 @@
 .app-author-select{
     margin: -37px 0 0 100px; 
     width: 160px;
+    cursor: pointer;
 }
 .app-select, .author-select{
     padding: 10px;
@@ -227,4 +230,10 @@
 }
 .slider-nav{
     cursor: pointer;
+}
+.item:hover{
+    background: #e2e2e2;
+    text-decoration: none;
+}
+.rate-list{
 }

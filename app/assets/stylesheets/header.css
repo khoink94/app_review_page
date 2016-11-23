@@ -1,0 +1,25 @@
+.header-profile{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.header-avatar{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px 40px 0 40px;
+    margin-right: 5px;
+}
+.header-triangle-bottom{
+    font-size: 14px;
+}
+.dropdown-menu{
+    top: 65px;
+    right: 0;
+    display: block;
+    opacity: 0;
+    width: 150px;
+    left: auto;
+}
