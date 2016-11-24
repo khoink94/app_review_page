@@ -10926,7 +10926,7 @@ h3.aa_cg__text__title {
 
 @media only screen and (min-width: 1224px) {
   .container-resp {
-    margin: 0 50px;
+    margin: 0 150px;
     max-width: none;
   }
 }
@@ -15144,6 +15144,8 @@ a.post__content__app__author:focus {
   font-weight: 300;
   line-height: 1.2;
   text-transform: uppercase;
+  overflow: hidden;
+  height: 100px;
 }
 
 .aa_ar__score {
@@ -18760,7 +18762,7 @@ a.underline:focus:before {
 }
 
 .aa_padding-t--20 {
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .aa_padding-b--20 {

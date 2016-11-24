@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get '/search', to: 'search#index'
   get '/app', to: 'app#index'
   get '/app/update', to: 'app#update'
+  get '/ranking', to: 'static_pages#ranking'
+  get '/recent', to: 'static_pages#recent'
+  get '/category', to: 'static_pages#category'
   root "static_pages#home"
 
   namespace :admin do

@@ -236,7 +236,7 @@ body {
 
 .comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
 .comment-box .comment-name.by-author:after {
-	content: 'Your comment';
+	content: 'Your review';
 	background: #03658c;
 	color: #FFF;
 	font-size: 12px;

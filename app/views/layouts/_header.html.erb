@@ -42,7 +42,7 @@
 <% else %>
     <!-- main menu -->
         <nav id="js-nav" class="am am--aa">
-            <div class="container-resp">
+            <div class="container-resp" style="margin: 0 50px; max-width: 2000px;">
                 <a href="<%= root_path %>" class="am__elem aa_pull--left aa_padding-l--0">
                     <div class="am__elem__text aa_text--24 aa_text--light">App<span class="aa_text--bold">Review</span></div>
                 </a>
@@ -86,7 +86,7 @@
                 <form action="<%= search_path %>" method="get">
                     <div class="row">
                         <div class="form-group col-sm-10" style="margin-bottom: 0;">
-                            <input type="text" class="form-control" id="search" name="search" placeholder="applications, authors, ...">
+                            <input type="text" class="form-control" id="search" name="search" placeholder="applications, ...">
                         </div>
                         <div class="col-sm-2">
                             <button type="submit" class="btn btn-success" style="">Search</button>

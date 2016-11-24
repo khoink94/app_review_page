@@ -10,7 +10,6 @@ class SearchController < ApplicationController
 		if @applications.present?
 			@applications = @applications.paginate(page: params[:page_app], :per_page => 16)
 		end	
-		@companies = Company.com_search(params[:search]).paginate(page: params[:page_com], :per_page => 16)
 		@search = params[:search]
 		@minrating = params[:minrating]
 		@categories = Category.all
