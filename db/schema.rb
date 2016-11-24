@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20161116203625) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["application_id"], name: "index_application_categories_on_application_id"
-    t.index ["category_id", "application_id"], name: "index_application_categories_on_category_id_and_application_id"
+    t.index ["category_id", "application_id"], name: "index_application_categories_on_category_id_and_application_id", unique: true
     t.index ["category_id"], name: "index_application_categories_on_category_id"
   end
 
