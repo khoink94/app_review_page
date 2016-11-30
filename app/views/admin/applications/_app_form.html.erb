@@ -16,6 +16,47 @@
          </p>
          <%= f.file_field :appimage, class: "form-control" %>
          <%= f.hidden_field :appimage_cache %>
+
+         <%= f.label :screen1 %>
+         <p>
+           <%= image_tag(@application.screen1.url, :width => 100, :height => 100) if @application.screen1? %>
+         </p>
+         <%= f.file_field :screen1, class: "form-control" %>
+         <%= f.hidden_field :screen1_cache %>
+
+         <%= f.label :screen2 %>
+         <p>
+           <%= image_tag(@application.screen2.url, :width => 100, :height => 100) if @application.screen2? %>
+         </p>
+         <%= f.file_field :screen2, class: "form-control" %>
+         <%= f.hidden_field :screen2_cache %>
+
+
+         <%= f.label :screen3 %>
+         <p>
+           <%= image_tag(@application.screen3.url, :width => 100, :height => 100) if @application.screen3? %>
+         </p>
+         <%= f.file_field :screen3, class: "form-control" %>
+         <%= f.hidden_field :screen3_cache %>
+
+
+         <%= f.label :screen4 %>
+         <p>
+           <%= image_tag(@application.screen4.url, :width => 100, :height => 100) if @application.screen4? %>
+         </p>
+         <%= f.file_field :screen4, class: "form-control" %>
+         <%= f.hidden_field :screen4_cache %>
+
+
+         <%= f.label :screen5 %>
+         <p>
+           <%= image_tag(@application.screen5.url, :width => 100, :height => 100) if @application.screen5? %>
+         </p>
+         <%= f.file_field :screen5, class: "form-control" %>
+         <%= f.hidden_field :screen5_cache %>
+
+
+         
       </div>
       <br>
 
