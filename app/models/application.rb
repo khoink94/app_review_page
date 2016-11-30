@@ -4,6 +4,13 @@ class Application < ApplicationRecord
 	has_many :application_categories
   has_many :categories, :through => :application_categories
   mount_uploader :appimage, AppimageUploader
+  mount_uploader :screen1, Screen1Uploader
+  mount_uploader :screen2, Screen2Uploader
+  mount_uploader :screen3, Screen3Uploader
+  mount_uploader :screen4, Screen4Uploader
+  mount_uploader :screen5, Screen5Uploader
+
+
 
 	
 	def self.app_search(search,category = 'all')

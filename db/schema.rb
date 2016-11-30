@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116203625) do
+ActiveRecord::Schema.define(version: 20161130171011) do
 
   create_table "application_categories", force: :cascade do |t|
     t.integer  "category_id"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20161116203625) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "appimage"
+    t.string   "screen1"
+    t.string   "screen2"
+    t.string   "screen3"
+    t.string   "screen4"
+    t.string   "screen5"
   end
 
   create_table "categories", force: :cascade do |t|

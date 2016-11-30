@@ -73,7 +73,7 @@ class Admin::ApplicationsController < ApplicationController
 	end
 	
 	def application_params
-    	params.require(:application).permit :application_name, :description, :appimage
+    	params.require(:application).permit :application_name, :description, :appimage, :screen1, :screen2, :screen3, :screen4, :screen5 
 	end
 
 	def categories_params
