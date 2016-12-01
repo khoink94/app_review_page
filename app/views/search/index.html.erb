@@ -22,7 +22,7 @@
                       <div class="col-sm-4" style="margin-top: 15px;">
                           <label for="range">Minimum Rate:</label>
                           <div class="range range-success" style="margin-top: 5px; background-color: white;">
-                              <input type="range" name="minrating" min="0" max="5" value="<%= @minrating %>" onchange="$('#rate-output').val(value+'*');">
+                              <input type="range" name="minrating" min="0" max="5" value="<%= @minrating %>" onchange="$('#rate-output').text(value+'*'); alert(value);">
                               <output id="rate-output"><%= @minrating %> *</output>
                           </div>
                       </div>

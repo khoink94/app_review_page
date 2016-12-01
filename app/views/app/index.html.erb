@@ -45,6 +45,23 @@
                         <div style="margin: 30px 10px; border-bottom: 1px solid #ccc;">
                             <p><%= raw(application.description) %></p>
                         </div>
+                        <div class="slider-nav">
+                            <div>
+                                <img style="width: 200px; height: 500px;" src="<%= application.screen1 %>">
+                            </div>  
+                            <div>
+                                <img style="width: 200px; height: 500px;" src="<%= application.screen2 %>">
+                            </div> 
+                            <div>
+                                <img style="width: 200px; height: 500px;" src="<%= application.screen3 %>">
+                            </div> 
+                            <div>
+                                <img style="width: 200px; height: 500px;" src="<%= application.screen4 %>">
+                            </div> 
+                            <div>
+                                <img style="width: 200px; height: 500px;" src="<%= application.screen5 %>">
+                            </div> 
+                        </div>
                         <div class="row" style="margin: 20px 0;">
                             <div class="col-md-1"></div>
                             <div class="col-md-2">
@@ -187,6 +204,18 @@
                         						<% end %>	
                         					<% end %>	
                     						</div>
+                    						<% if @review_logged.present? %>      
+                    							<span class="like-count<%= @review_logged.id %>"><%= @review_logged.likes.count() %></span>
+                    						    <% if @review_logged.likes.find_by(user_id: current_user.id).present? %>
+                            						<button type="button" id="<%= @review_logged.id %>" class="btn-like btn btn-default btn-sm">
+                                                          <span class="glyphicon glyphicon-thumbs-up" style="font-color: #blue;"></span> Like
+                                                    </button>
+                                                <% else %>    
+                                                    <button type="button" id="<%= @review_logged.id %>" class="btn-like btn btn-primary btn-sm">
+                                                          <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                                                    </button>
+                                                <% end %>
+                                            <% end %>    
                     					</div>
                     				</div>
                     			</li>
@@ -211,6 +240,16 @@
                                 						<div class="comment-content" style="overflow: auto;">
                                 							<%= review.comment %>
                                 						</div>
+                                						<span class="like-count<%= review.id %>"><%= review.likes.count() %></span>
+                            						    <% if review.likes.find_by(user_id: current_user.id).present? %>
+                                    						<button type="button" id="<%= review.id %>" class="btn-like btn btn-default btn-sm">
+                                                                  <span class="glyphicon glyphicon-thumbs-up" style="font-color: #blue;"></span> Like
+                                                            </button>
+                                                        <% else %>    
+                                                            <button type="button" id="<%= review.id %>" class="btn-like btn btn-primary btn-sm">
+                                                                  <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                                                            </button>
+                                                        <% end %>
                                 					</div>
                                 				</div>
                                 			</li>
@@ -234,6 +273,11 @@
         <% @applications.each do |application| %>
             <script>
                 $(document).ready(function(){
+                    $('.slider-nav').slick({
+                        autoplay: true,
+                        prevArrow: '<span class="glyphicon glyphicon-circle-arrow-left"></span>',
+                        nextArrow: '<span class="glyphicon glyphicon-circle-arrow-right"></span>'
+                    });
                     $("#input-rating").rating();
                     $('div .clear-rating').remove();
                     if($('#comment').val() != ''){
@@ -256,6 +300,19 @@
                     });
                     $('.comment-delete').click(function(){
                         formsubmit2();
+                    });
+                    $('.btn-like').click(function(){
+                        formlike($(this).attr('id'));
+                        if($(this).hasClass('btn-default')){
+                            $(this).removeClass('btn-default');
+                            $(this).addClass('btn-primary');
+                            console.log('haha');
+                        }
+                        if($(this).hasClass('btn-primary')){
+                            $(this).removeClass('btn-primary');
+                            $(this).addClass('btn-default');
+                            console.log('hehe');
+                        }
                     });
                 });
                 
@@ -319,6 +376,25 @@
                             $('.comment-input textarea').val('');
                             $('.comment-display').hide();
                             $('.comment-input').show();
+                        },
+                        error: function(){
+                            alert ("Error");
+                        }
+                    });
+                }
+                
+                function formlike(id) {
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: '/app/update',
+                        contentType: 'application/json',
+                        data: $.param({
+                            review_id: id,
+                            user_id: <%= current_user.id %>,
+                        }),
+                        success: function(msg) {
+                            $('.like-count'+id).text(msg);
                         },
                         error: function(){
                             alert ("Error");
