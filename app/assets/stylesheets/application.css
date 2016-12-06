@@ -208,6 +208,9 @@
 .author-select{
     margin-left: 90px;
 }
+.slick-arrow{
+    opacity: 0;
+}
 .glyphicon-circle-arrow-right{
     position: absolute;
     bottom: 20px;
@@ -225,8 +228,24 @@
     color: white;
     z-index: 1;
 }
-.slick-arrow{
-    opacity: 0;
+.glyphicon-chevron-right{
+    position: absolute;
+    bottom: 50%;
+    right: -30px;
+    top: auto;
+    font-size: 30px;
+    color: gray;
+    opacity: 1;
+}
+.glyphicon-chevron-left{
+    position: absolute;
+    bottom: 50%;
+    left: -30px;
+    top: auto;
+    font-size: 30px;
+    color: gray;
+    z-index: 1;
+    opacity: 1;
 }
 .slider-nav{
     cursor: pointer;

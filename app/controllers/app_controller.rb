@@ -38,9 +38,24 @@ class AppController < ApplicationController
                     :comment => params[:comment],
                     :star => params[:rating]    
                 )  
-            end    
+            end 
+            @application = Application.find_by id: params[:app_id]
+            @data = [
+                :average_rating => @application.average_rating(),
+                :size => @application.reviews.size,
+                :rating_percent_5 => @application.rating_percent(5),
+                :rating_count_5 => @application.rating_count(5),
+                :rating_percent_4 => @application.rating_percent(4),
+                :rating_count_4 => @application.rating_count(4),
+                :rating_percent_3 => @application.rating_percent(3),
+                :rating_count_3 => @application.rating_count(3),
+                :rating_percent_2 => @application.rating_percent(2),
+                :rating_count_2 => @application.rating_count(2),
+                :rating_percent_1 => @application.rating_percent(1),
+                :rating_count_1 => @application.rating_count(1),
+            ]
             respond_to do |format|
-                format.json  { render :json => params[:user_id].to_json, :status => :ok }
+                format.json  { render :json => @data[0].to_json, :status => :ok }
             end
         end    
     end    

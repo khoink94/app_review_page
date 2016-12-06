@@ -39,38 +39,58 @@
         
                     <div class="aa_text--center aa_opacity--05 aa_margin-t--5"><%= application.created_at.strftime('%b %e,%Y') %></div>
                 </div>
-                <div class="row">
+                <div class="row" style="width: 1250px; margin:0 auto;">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <div style="margin: 30px 10px; border-bottom: 1px solid #ccc;">
                             <p><%= raw(application.description) %></p>
                         </div>
-                        <div class="slider-nav">
+                        <div class="slider-nav" style="width: 600px; margin: 50px auto;">
                             <div>
-                                <img style="width: 200px; height: 500px;" src="<%= application.screen1 %>">
-                            </div>  
+                                <% if application.screen1.present? %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="<%= application.screen1 %>">
+                                <% else %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="assets/no-image-available.jpg">
+                                <% end %>
+                            </div>
                             <div>
-                                <img style="width: 200px; height: 500px;" src="<%= application.screen2 %>">
-                            </div> 
+                                <% if application.screen2.present? %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="<%= application.screen2 %>">
+                                <% else %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="assets/no-image-available.jpg">
+                                <% end %>
+                            </div>
                             <div>
-                                <img style="width: 200px; height: 500px;" src="<%= application.screen3 %>">
-                            </div> 
+                                <% if application.screen3.present? %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="<%= application.screen3 %>">
+                                <% else %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="assets/no-image-available.jpg">
+                                <% end %>
+                            </div>
                             <div>
-                                <img style="width: 200px; height: 500px;" src="<%= application.screen4 %>">
-                            </div> 
+                                <% if application.screen4.present? %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="<%= application.screen4 %>">
+                                <% else %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="assets/no-image-available.jpg">
+                                <% end %>
+                            </div>
                             <div>
-                                <img style="width: 200px; height: 500px;" src="<%= application.screen5 %>">
-                            </div> 
+                                <% if application.screen5.present? %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="<%= application.screen5 %>">
+                                <% else %>
+                                    <img style="height: 400px; max-width: 500px; margin: 0 auto;" src="assets/no-image-available.jpg">
+                                <% end %>
+                            </div>
                         </div>
                         <div class="row" style="margin: 20px 0;">
                             <div class="col-md-1"></div>
                             <div class="col-md-2">
-                                <h1 style="font-size: 60px; margin: 0;"><%= application.average_rating %></h1>
+                                <h1 id="average_rating" style="font-size: 60px; margin: 0;"><%= application.average_rating %></h1>
                                 <div style="background: url(<%= asset_path 'star1.png' %>); margin-left: 3px; width: 120px; height: 20px;">   
-                                    <div style="background: url(<%= asset_path 'star2.png' %>); width: <%= application.average_rating * 20 %>%; height: 20px;"></div>
+                                    <div id='average_rating_star' style="background: url(<%= asset_path 'star2.png' %>); width: <%= application.average_rating * 20 %>%; height: 20px;"></div>
                                 </div>
                                 <div style="margin-top: 10px; margin-left: 20px; font-size: 13px; color: #737373;">
-                                    <span class="glyphicon glyphicon-user"></span>&nbsp;<%= application.reviews.size %> total
+                                    <span class="glyphicon glyphicon-user"></span>&nbsp;<span id="review_size"><%= application.reviews.size %></span> total
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -82,7 +102,7 @@
                                                   5
                                             </div>
                                             <div class="col-md-11" style="padding: 0">
-                                                <div style="width: <%= application.rating_percent(5) %>%; background-color: yellowgreen"><span style="margin-left: 10px; color: #222"><%= application.rating_count(5) %></span></div>
+                                                <div id="rating_percent_5" style="width: <%= application.rating_percent(5) %>%; background-color: yellowgreen"><span id="rating_count_5" style="margin-left: 10px; color: #222"><%= application.rating_count(5) %></span></div>
                                             </div>
                                         </div>    
                                     </li>
@@ -93,7 +113,7 @@
                                                   4
                                             </div>
                                             <div class="col-md-11" style="padding: 0">
-                                                <div style="width: <%= application.rating_percent(4) %>%; background-color: chartreuse"><span style="margin-left: 10px; color: #222"><%= application.rating_count(4) %></span></div>
+                                                <div id="rating_percent_4" style="width: <%= application.rating_percent(4) %>%; background-color: chartreuse"><span id="rating_count_4" style="margin-left: 10px; color: #222"><%= application.rating_count(4) %></span></div>
                                             </div>
                                         </div>    
                                     </li>
@@ -104,7 +124,7 @@
                                                   3
                                             </div>
                                             <div class="col-md-11" style="padding: 0">
-                                                <div style="width: <%= application.rating_percent(3) %>%; background-color: coral"><span style="margin-left: 10px; color: #222"><%= application.rating_count(3) %></span></div>
+                                                <div id="rating_percent_3" style="width: <%= application.rating_percent(3) %>%; background-color: coral"><span id="rating_count_3" style="margin-left: 10px; color: #222"><%= application.rating_count(3) %></span></div>
                                             </div>
                                         </div>    
                                     </li>
@@ -115,7 +135,7 @@
                                                   2
                                             </div>
                                             <div class="col-md-11" style="padding: 0">
-                                                <div style="width: <%= application.rating_percent(2) %>%; background-color: darkturquoise"><span style="margin-left: 10px; color: #222"><%= application.rating_count(2) %></span></div>
+                                                <div id="rating_percent_2" style="width: <%= application.rating_percent(2) %>%; background-color: darkturquoise"><span id="rating_count_2" style="margin-left: 10px; color: #222"><%= application.rating_count(2) %></span></div>
                                             </div>
                                         </div>    
                                     </li>
@@ -126,7 +146,7 @@
                                                   1
                                             </div>
                                             <div class="col-md-11" style="padding: 0">
-                                                <div style="width: <%= application.rating_percent(1) %>%; background-color: hotpink"><span style="margin-left: 10px; color: #222"><%= application.rating_count(1) %></span></div>
+                                                <div id="rating_percent_1" style="width: <%= application.rating_percent(1) %>%; background-color: hotpink"><span id="rating_count_1" style="margin-left: 10px; color: #222"><%= application.rating_count(1) %></span></div>
                                             </div>
                                         </div>    
                                     </li>
@@ -205,17 +225,16 @@
                         					<% end %>	
                     						</div>
                     						<% if @review_logged.present? %>      
-                    							<span class="like-count<%= @review_logged.id %>"><%= @review_logged.likes.count() %></span>
-                    						    <% if @review_logged.likes.find_by(user_id: current_user.id).present? %>
-                            						<button type="button" id="<%= @review_logged.id %>" class="btn-like btn btn-default btn-sm">
-                                                          <span class="glyphicon glyphicon-thumbs-up" style="font-color: #blue;"></span> Like
-                                                    </button>
-                                                <% else %>    
-                                                    <button type="button" id="<%= @review_logged.id %>" class="btn-like btn btn-primary btn-sm">
-                                                          <span class="glyphicon glyphicon-thumbs-up"></span> Like
-                                                    </button>
-                                                <% end %>
-                                            <% end %>    
+                    							<span class="like like-count<%= @review_logged.id %>"><%= @review_logged.likes.count() %></span>
+                    							<span class="like glyphicon glyphicon-thumbs-up" style="padding: 0;"></span>
+                    							<% if user_signed_in? %>
+                        						    <% if @review_logged.likes.find_by(user_id: current_user.id).present? %>
+                                                        <span class="like btn-like" id="<%= @review_logged.id %>" style="cursor: pointer;">Unlike</span>
+                                                    <% else %>    
+                                                        <span class="like btn-like" id="<%= @review_logged.id %>" style="cursor: pointer;">Like</span>
+                                                    <% end %>
+                                                <% end %>    
+                                            <% end %>  
                     					</div>
                     				</div>
                     			</li>
@@ -240,16 +259,15 @@
                                 						<div class="comment-content" style="overflow: auto;">
                                 							<%= review.comment %>
                                 						</div>
-                                						<span class="like-count<%= review.id %>"><%= review.likes.count() %></span>
-                            						    <% if review.likes.find_by(user_id: current_user.id).present? %>
-                                    						<button type="button" id="<%= review.id %>" class="btn-like btn btn-default btn-sm">
-                                                                  <span class="glyphicon glyphicon-thumbs-up" style="font-color: #blue;"></span> Like
-                                                            </button>
-                                                        <% else %>    
-                                                            <button type="button" id="<%= review.id %>" class="btn-like btn btn-primary btn-sm">
-                                                                  <span class="glyphicon glyphicon-thumbs-up"></span> Like
-                                                            </button>
-                                                        <% end %>
+                                						<span class="like like-count<%= review.id %>"><%= review.likes.count() %></span>
+                                						<span class="like glyphicon glyphicon-thumbs-up" style="padding: 0;"></span>
+                                						<% if user_signed_in? %>
+                                						    <% if review.likes.find_by(user_id: current_user.id).present? %>
+                                        						<span class="like btn-like" id="<%= review.id %>" style="cursor: pointer;">Unlike</span>
+                                                            <% else %>    
+                                                                <span class="like btn-like" id="<%= review.id %>" style="cursor: pointer;">Like</span>
+                                                            <% end %>
+                                                        <% end %>    
                                 					</div>
                                 				</div>
                                 			</li>
@@ -268,16 +286,23 @@
     <% end %>
 </div>
 <!-- page content end -->
+<script>
+    $(document).ready(function(){
+        $('.slider-nav').slick({
+            autoplay: true,
+            infinite: true,
+            autoplaySpeed: 5000,
+            slidesToScroll: 1,
+            prevArrow: '<span class="glyphicon glyphicon-chevron-left"></span>',
+            nextArrow: '<span class="glyphicon glyphicon-chevron-right"></span>'
+        });
+    });
+</script>
 <% if @applications.present? %>
     <% if user_signed_in? %>
         <% @applications.each do |application| %>
             <script>
                 $(document).ready(function(){
-                    $('.slider-nav').slick({
-                        autoplay: true,
-                        prevArrow: '<span class="glyphicon glyphicon-circle-arrow-left"></span>',
-                        nextArrow: '<span class="glyphicon glyphicon-circle-arrow-right"></span>'
-                    });
                     $("#input-rating").rating();
                     $('div .clear-rating').remove();
                     if($('#comment').val() != ''){
@@ -303,16 +328,6 @@
                     });
                     $('.btn-like').click(function(){
                         formlike($(this).attr('id'));
-                        if($(this).hasClass('btn-default')){
-                            $(this).removeClass('btn-default');
-                            $(this).addClass('btn-primary');
-                            console.log('haha');
-                        }
-                        if($(this).hasClass('btn-primary')){
-                            $(this).removeClass('btn-primary');
-                            $(this).addClass('btn-default');
-                            console.log('hehe');
-                        }
                     });
                 });
                 
@@ -328,8 +343,20 @@
                             rating: $('#input-rating').val(),
                             comment: $('#comment').val(),
                         }),
-                        success: function(msg) {
-                
+                        success: function(data) {
+                            $('#average_rating').text(data.average_rating);
+                            $('#average_rating_star').css('width',(data.average_rating * 20)+'%');
+                            $('#review_size').text(data.size);
+                            $('#rating_percent_5').css('width',data.rating_percent_5+'%');
+                            $('#rating_count_5').text(data.rating_count_5);
+                            $('#rating_percent_4').css('width',data.rating_percent_4+'%');
+                            $('#rating_count_4').text(data.rating_count_4);
+                            $('#rating_percent_3').css('width',data.rating_percent_3+'%');
+                            $('#rating_count_3').text(data.rating_count_3);
+                            $('#rating_percent_2').css('width',data.rating_percent_2+'%');
+                            $('#rating_count_2').text(data.rating_count_2);
+                            $('#rating_percent_1').css('width',data.rating_percent_1+'%');
+                            $('#rating_count_1').text(data.rating_count_1);
                         },
                         error: function(){
                             alert ("Error");
@@ -395,6 +422,13 @@
                         }),
                         success: function(msg) {
                             $('.like-count'+id).text(msg);
+                            if($('#'+id+'.btn-like').text() == 'Like'){
+                                $('#'+id+'.btn-like').text('Unlike');
+                                console.log($('#'+id+'.btn-like').text());
+                            }else{
+                                $('#'+id+'.btn-like').text('Like');
+                                console.log($('#'+id+'.btn-like').text());
+                            }
                         },
                         error: function(){
                             alert ("Error");
