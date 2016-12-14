@@ -1,0 +1,5 @@
+class AddTeamToApplication < ActiveRecord::Migration[5.0]
+  def change
+    add_column :applications, :team, :string
+  end
+end

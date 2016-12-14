@@ -35,6 +35,12 @@
               <div class="panel-body">
                 <%= raw(@application.description) %>
               </div>
+              <div class="panel-body">
+                <%= @application.team %>
+              </div>
+              <div class="panel-body">
+                <%= @application.device %>
+              </div>
               <p>
                 <%= link_to "Delete", admin_application_path, method: :delete, data: { confirm: "You sure?"}, class: "btn btn-danger" %>
               </p>
