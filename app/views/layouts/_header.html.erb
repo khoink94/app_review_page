@@ -67,6 +67,7 @@
                     				<span><%= current_user.email %></span>
                     				<span class="glyphicon glyphicon-triangle-bottom header-triangle-bottom"></span>
                     				<ul class="dropdown-menu">
+                                        <li><%= link_to "Profile", current_user %></li>
                                         <li><%= link_to "EDIT", edit_user_registration_path %></li>
                                         <li><%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete %></li>
                                     </ul>

@@ -1,0 +1,46 @@
+<div class="main-wrapper">
+    <section class="content aa_clearfix">
+        <div class="article-layout container-resp">
+            <div class="aa_text--center aa_text--36 aa_text--bold aa_margin-tb--20">
+                <span class="aa_text--thin">Reviewed</span>
+            </div>
+        </div>
+        <div class="container-resp aa_grid aa_grid--2-m aa_grid--3-l aa_grid--4-xl aa_padding-t--20">
+            <!-- app reviews -->
+            <% @reviews.each do |review| %>
+                <div class="aa_grid__elem">
+                    <a href="<%= app_path %>?id=<%= review.application.id %>" class="aa_ar aa_clearfix item">
+                        <div class="aa_ar__score">
+                            <div class="aa_app__score" data-score="<%= review.application.average_rating %>">
+                                <svg class="aa_app__score__svg" height="100" width="100" stroke-dashoffset="<%= 250 - review.application.average_rating * 50 %>">
+                                    <circle class="aa_app__score__svg__bg" cx="50" cy="50" r="40"></circle>
+                                    <circle class="aa_app__score__svg__line" cx="50" cy="50" r="40"></circle>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="aa_ar__icon">
+                            <div class="aa_app__icon aa_bg aa_grad--5">
+                                <div class="aa_bg__ aa_bg__--abs aa_wait-to-load js-wait-to-load loaded" style="background-image: url('<%= review.application.appimage %>')"></div>
+                            </div>
+                        </div>
+
+                        <div class="aa_ar__text">
+                            <div class="aa_ar__text__">
+                                <h3 class="aa_ar__text__title aa_text--truncate">
+                                    <%= review.application.application_name %>
+                                </h3>
+
+                                <div class="aa_ar__text__developer aa_text--truncate">
+                                    <% review.application.categories.each do |category| %>
+                                        <%= category.category_name %>,
+                                    <% end %>   
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="aa_ar__details"><%= raw(review.application.description) %></div>
+                    </a>
+                </div>
+                <% end %>
+</div>

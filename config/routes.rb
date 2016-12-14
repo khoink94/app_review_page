@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/category', to: 'static_pages#category'
   root "static_pages#home"
 
+  resources :users, :only => [:show]
+
   namespace :admin do
   	root "users#index"
   	resources :applications
