@@ -155,7 +155,7 @@
                             <div class="col-md-1"></div>
                         </div>
                         <% if user_signed_in? %>
-                        <div style="padding-left: 100px;">
+                        <div style="padding-left: 100px; margin-bottom: 20px;">
                             <label for="input-rating" class="control-label">Rate This</label>
                             <% if @review_logged.present? %>
                                 <input id="input-rating" class="rating" type="number" name="rating" value="<%= @review_logged.star.round(0) %>" data-min="0" data-max="5" data-step="1" data-size="xs">
@@ -164,118 +164,132 @@
                             <% end %>
                         </div>
                         <% end %>
-                        <div class="comments-container">
-                    		<ul id="comments-list" class="comments-list">
-                    		    <% if user_signed_in? %>
-                    		    <li class="comment-input">
-                    				<div class="comment-main-level">
-                    					<!-- Avatar -->
-                    					<% if current_user.avatar.present? %>
-                					        <div class="comment-avatar"><img src="<%= current_user.avatar %>" alt=""></div>
-                					    <% else %>
-                					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-                					    <% end %>
-                    					<!-- Contenedor del Comentario -->
-                    					<div class="comment-box">
-                    						<div class="comment-head">
-                    							<h6 class="comment-name"><a href="#"><%= current_user.email %></a></h6>
-                    						</div>
-                    						<div class="comment-content">
-                    						    <div class="form-group" style="margin-bottom: 0;">
-                    						        <% if @review_logged.present? %>
-                    			                        <% if @review_logged.comment? %>
-                                                            <textarea class="form-control" rows="1" id="comment" name="comment"><%= @review_logged.comment %></textarea>
-                                                        <% else %>
+                        <ul class="nav nav-tabs">
+                          <li class="active" style="margin: 0;"><a data-toggle="tab" href="#reviews">Reviews</a></li>
+                          <li style="margin: 0;"><a data-toggle="tab" href="#comment-facebook">Comment Facebook</a></li>
+                          <li style="margin: 0; padding: 6px 0 0 10px;">
+                              <div class="fb-share-button" data-href="<%= request.original_url %>" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fapp-review-page-hacnguyet.c9users.io%2Fapp%3Fid%3D2&amp;src=sdkpreparse">Chia sẻ</a></div>
+                          </li>
+                        </ul>
+                        <div class="tab-content">
+                          <div id="reviews" class="tab-pane fade in active">
+                            <div class="comments-container">
+                        		<ul id="comments-list" class="comments-list">
+                        		    <% if user_signed_in? %>
+                        		    <li class="comment-input">
+                        				<div class="comment-main-level">
+                        					<!-- Avatar -->
+                        					<% if current_user.avatar.present? %>
+                    					        <div class="comment-avatar"><img src="<%= current_user.avatar %>" alt=""></div>
+                    					    <% else %>
+                    					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                    					    <% end %>
+                        					<!-- Contenedor del Comentario -->
+                        					<div class="comment-box">
+                        						<div class="comment-head">
+                        							<h6 class="comment-name"><a href="#"><%= current_user.email %></a></h6>
+                        						</div>
+                        						<div class="comment-content">
+                        						    <div class="form-group" style="margin-bottom: 0;">
+                        						        <% if @review_logged.present? %>
+                        			                        <% if @review_logged.comment? %>
+                                                                <textarea class="form-control" rows="1" id="comment" name="comment"><%= @review_logged.comment %></textarea>
+                                                            <% else %>
+                                                                <textarea class="form-control" rows="1" id="comment" name="comment"></textarea>
+                                                            <% end %> 
+                                                        <% else %>  
                                                             <textarea class="form-control" rows="1" id="comment" name="comment"></textarea>
-                                                        <% end %> 
-                                                    <% else %>  
-                                                        <textarea class="form-control" rows="1" id="comment" name="comment"></textarea>
-                                                    <% end %>    
-                                                </div>
-                    						</div>
-                    					</div>
-                    				</div>
-                    			</li>
-                    			<li class="comment-display">
-                    				<div class="comment-main-level">
-                    					<!-- Avatar -->
-                					    <% if current_user.avatar.present? %>
-                					        <div class="comment-avatar"><img src="<%= current_user.avatar %>" alt=""></div>
-                					    <% else %>
-                					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
-                					    <% end %> 
-                    					<!-- Contenedor del Comentario -->
-                    					<div class="comment-box">
-                    						<div class="comment-head">
-                    							<h6 class="comment-name by-author"><a href="#"><%= current_user.email %></a></h6>
-                    							<span>
-                    							<% if @review_logged.present? %>     
-                        							<% if @review_logged.updated_at.present? %>     
-                        							    <%= @review_logged.updated_at.strftime('%b %e,%Y') %>
-                        							<% end %>
-                        						<% end %>	
-                    							</span>
-                    							<div style="float: right"><span class="comment-edit" style="margin-right: 10px; cursor: pointer;">Edit</span><span class="comment-delete" style="cursor: pointer;">Delete</span></div>
-                    						</div>
-                    						<div class="comment-content" style="overflow: auto;">
-                    						<% if @review_logged.present? %>      
-                        						<% if @review_logged.comment.present? %>    
-                        							<%= @review_logged.comment %>
-                        						<% end %>	
-                        					<% end %>	
-                    						</div>
-                    						<% if @review_logged.present? %>      
-                    							<span class="like like-count<%= @review_logged.id %>"><%= @review_logged.likes.count() %></span>
-                    							<span class="like glyphicon glyphicon-thumbs-up" style="padding: 0;"></span>
-                    							<% if user_signed_in? %>
-                        						    <% if @review_logged.likes.find_by(user_id: current_user.id).present? %>
-                                                        <span class="like btn-like" id="<%= @review_logged.id %>" style="cursor: pointer;">Unlike</span>
-                                                    <% else %>    
-                                                        <span class="like btn-like" id="<%= @review_logged.id %>" style="cursor: pointer;">Like</span>
-                                                    <% end %>
-                                                <% end %>    
-                                            <% end %>  
-                    					</div>
-                    				</div>
-                    			</li>
-                    			<% end %>
-                    			<% if @reviews.present? %>
-                        			<% @reviews.each do |review| %>
-                        			    <% if review.comment.present? %>
-                                			<li>
-                                				<div class="comment-main-level">
-                                					<!-- Avatar -->
-                                					<% if review.user.avatar.present? %>
-                            					        <div class="comment-avatar"><img src="<%= review.user.avatar %>" alt=""></div>
-                            					    <% else %>
-                            					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
-                            					    <% end %> 
-                                					<!-- Contenedor del Comentario -->
-                                					<div class="comment-box">
-                                						<div class="comment-head">
-                                							<h6 class="comment-name"><a href="#"><%= review.user.email %></a></h6>
-                                							<span><%= review.updated_at.strftime('%b %e,%Y') %></span>
-                                						</div>
-                                						<div class="comment-content" style="overflow: auto;">
-                                							<%= review.comment %>
-                                						</div>
-                                						<span class="like like-count<%= review.id %>"><%= review.likes.count() %></span>
-                                						<span class="like glyphicon glyphicon-thumbs-up" style="padding: 0;"></span>
-                                						<% if user_signed_in? %>
-                                						    <% if review.likes.find_by(user_id: current_user.id).present? %>
-                                        						<span class="like btn-like" id="<%= review.id %>" style="cursor: pointer;">Unlike</span>
-                                                            <% else %>    
-                                                                <span class="like btn-like" id="<%= review.id %>" style="cursor: pointer;">Like</span>
-                                                            <% end %>
                                                         <% end %>    
-                                					</div>
-                                				</div>
-                                			</li>
-                                		<% end %>	
+                                                    </div>
+                        						</div>
+                        					</div>
+                        				</div>
+                        			</li>
+                        			<li class="comment-display">
+                        				<div class="comment-main-level">
+                        					<!-- Avatar -->
+                    					    <% if current_user.avatar.present? %>
+                    					        <div class="comment-avatar"><img src="<%= current_user.avatar %>" alt=""></div>
+                    					    <% else %>
+                    					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                    					    <% end %> 
+                        					<!-- Contenedor del Comentario -->
+                        					<div class="comment-box">
+                        						<div class="comment-head">
+                        							<h6 class="comment-name by-author"><a href="#"><%= current_user.email %></a></h6>
+                        							<span>
+                        							<% if @review_logged.present? %>     
+                            							<% if @review_logged.updated_at.present? %>     
+                            							    <%= @review_logged.updated_at.strftime('%b %e,%Y') %>
+                            							<% end %>
+                            						<% end %>	
+                        							</span>
+                        							<div style="float: right"><span class="comment-edit" style="margin-right: 10px; cursor: pointer;">Edit</span><span class="comment-delete" style="cursor: pointer;">Delete</span></div>
+                        						</div>
+                        						<div class="comment-content" style="overflow: auto;">
+                        						<% if @review_logged.present? %>      
+                            						<% if @review_logged.comment.present? %>    
+                            							<%= @review_logged.comment %>
+                            						<% end %>	
+                            					<% end %>	
+                        						</div>
+                        						<% if @review_logged.present? %>      
+                        							<span class="like like-count<%= @review_logged.id %>"><%= @review_logged.likes.count() %></span>
+                        							<span class="like glyphicon glyphicon-thumbs-up" style="padding: 0;"></span>
+                        							<% if user_signed_in? %>
+                            						    <% if @review_logged.likes.find_by(user_id: current_user.id).present? %>
+                                                            <span class="like btn-like" id="<%= @review_logged.id %>" style="cursor: pointer;">Unlike</span>
+                                                        <% else %>    
+                                                            <span class="like btn-like" id="<%= @review_logged.id %>" style="cursor: pointer;">Like</span>
+                                                        <% end %>
+                                                    <% end %>    
+                                                <% end %>  
+                        					</div>
+                        				</div>
+                        			</li>
                         			<% end %>
-                    			<% end %>
-                    		</ul>
+                        			<% if @reviews.present? %>
+                            			<% @reviews.each do |review| %>
+                            			    <% if review.comment.present? %>
+                                    			<li>
+                                    				<div class="comment-main-level">
+                                    					<!-- Avatar -->
+                                    					<% if review.user.avatar.present? %>
+                                					        <div class="comment-avatar"><img src="<%= review.user.avatar %>" alt=""></div>
+                                					    <% else %>
+                                					        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                                					    <% end %> 
+                                    					<!-- Contenedor del Comentario -->
+                                    					<div class="comment-box">
+                                    						<div class="comment-head">
+                                    							<h6 class="comment-name"><a href="#"><%= review.user.email %></a></h6>
+                                    							<span><%= review.updated_at.strftime('%b %e,%Y') %></span>
+                                    						</div>
+                                    						<div class="comment-content" style="overflow: auto;">
+                                    							<%= review.comment %>
+                                    						</div>
+                                    						<span class="like like-count<%= review.id %>"><%= review.likes.count() %></span>
+                                    						<span class="like glyphicon glyphicon-thumbs-up" style="padding: 0;"></span>
+                                    						<% if user_signed_in? %>
+                                    						    <% if review.likes.find_by(user_id: current_user.id).present? %>
+                                            						<span class="like btn-like" id="<%= review.id %>" style="cursor: pointer;">Unlike</span>
+                                                                <% else %>    
+                                                                    <span class="like btn-like" id="<%= review.id %>" style="cursor: pointer;">Like</span>
+                                                                <% end %>
+                                                            <% end %>    
+                                    					</div>
+                                    				</div>
+                                    			</li>
+                                    		<% end %>	
+                            			<% end %>
+                        			<% end %>
+                        		</ul>
+                        	</div>
                     	</div>
+                          <div id="comment-facebook" class="tab-pane fade">
+                            <div class="fb-comments" data-href="<%= request.original_url %>" data-width="100%" data-numposts="5"></div>
+                          </div>
+                        </div>
                     </div>
                     <div class="col-md-2"></div>
                 </div>
