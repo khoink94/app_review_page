@@ -36,6 +36,14 @@
                             <a class="underline aa_text--bold" href="/category?category=<%= category.category_name %>"><%= category.category_name %></a>,
                         <% end %>
                     </div>
+                    <div class="al_content__main__author aa_clear">
+                        Team: 
+                            <%= application.team %>
+                    </div>
+                    <div class="al_content__main__author aa_clear">
+                        Device: 
+                            <%= application.device %>
+                    </div>
         
                     <div class="aa_text--center aa_opacity--05 aa_margin-t--5"><%= application.created_at.strftime('%b %e,%Y') %></div>
                 </div>
